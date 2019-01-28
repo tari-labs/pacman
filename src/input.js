@@ -89,6 +89,7 @@
     var KEY_T = 84;
 
     var KEY_A = 65;
+    var KEY_B = 66;
     var KEY_S = 83;
     var KEY_D = 68;
     var KEY_F = 70;
@@ -126,6 +127,7 @@
         return hud.isValidState() && !inGameMenu.isOpen();
     };
     addKeyDown(KEY_ESC, function() { inGameMenu.getMenuButton().onclick(); return true; }, isInGameMenuButtonClickable);
+    addKeyDown(KEY_B, function() { inGameMenu.getBossMenu().enable(); return true; }, isInGameMenuButtonClickable);
 
     // Move Pac-Man
     var isPlayState = function() { return state == learnState || state == newGameState || state == playState || state == readyNewState || state == readyRestartState; };

@@ -82,77 +82,11 @@ var fadeNextState = function (prevState, nextState, frameDuration, continueUpdat
 // (the home title screen state)
 
 var homeState = (function(){
-
-    var exitTo = function(s) {
-        switchState(s);
-        menu.disable();
-    };
-
-    var menu = new Menu("CHOOSE A GAME",2*tileSize,0*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
-    var getIconAnimFrame = function(frame) {
-        frame = Math.floor(frame/3)+1;
-        frame %= 4;
-        if (frame == 3) {
-            frame = 1;
-        }
-        return frame;
-    };
-    var getOttoAnimFrame = function(frame) {
-        frame = Math.floor(frame/3);
-        frame %= 4;
-        return frame;
-    };
-    menu.addTextIconButton(getGameName(GAME_PACMAN),
-        function() {
-            gameMode = GAME_PACMAN;
-            exitTo(preNewGameState);
-        },
-        function(ctx,x,y,frame) {
-            atlas.drawPacmanSprite(ctx,x,y,DIR_RIGHT,getIconAnimFrame(frame));
-        });
-    menu.addTextIconButton(getGameName(GAME_MSPACMAN),
-        function() {
-            gameMode = GAME_MSPACMAN;
-            exitTo(preNewGameState);
-        },
-        function(ctx,x,y,frame) {
-            atlas.drawMsPacmanSprite(ctx,x,y,DIR_RIGHT,getIconAnimFrame(frame));
-        });
-    menu.addTextIconButton(getGameName(GAME_COOKIE),
-        function() {
-            gameMode = GAME_COOKIE;
-            exitTo(preNewGameState);
-        },
-        function(ctx,x,y,frame) {
-            drawCookiemanSprite(ctx,x,y,DIR_RIGHT,getIconAnimFrame(frame), true);
-        });
-
-    menu.addSpacer(0.5);
-    menu.addTextIconButton("LEARN",
-        function() {
-            exitTo(learnState);
-        },
-        function(ctx,x,y,frame) {
-            atlas.drawGhostSprite(ctx,x,y,Math.floor(frame/8)%2,DIR_RIGHT,false,false,false,blinky.color);
-        });
-
     return {
-        init: function() {
-            menu.enable();
-            audio.coffeeBreakMusic.startLoop();
-        },
-        draw: function() {
-            renderer.clearMapFrame();
-            renderer.beginMapClip();
-            renderer.renderFunc(menu.draw,menu);
-            renderer.endMapClip();
-        },
-        update: function() {
-            menu.update();
-        },
-        getMenu: function() {
-            return menu;
-        },
+        init: function() {},
+        draw: function() {},
+        update: function() {},
+        getMenu: function() {},
     };
 
 })();
@@ -165,9 +99,7 @@ var learnState = (function(){
         init: function() {},
         draw: function() {},
         update: function() {},
-        getMenu: function() {
-            return menu;
-        },
+        getMenu: function() {},
     };
 
 })();

@@ -22,6 +22,18 @@ var inGameMenu = (function() {
     btn.setText("MENU");
     btn.setFont(tileSize+"px ArcadeR","#FFF");
 
+    // boss menu
+    var bossMenu = new Menu("BOSS!",2*tileSize,5*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px" +
+        " ArcadeR", "#EEE");
+    bossMenu.addTextButton("RESUME", function() {
+        bossMenu.disable();
+    });
+    bossMenu.backButton = bossMenu.buttons[0];
+    // override boss menu draw function
+    bossMenu.draw = function(ctx) {
+        loadBoss(ctx);
+    };
+
     // confirms a menu action
     var confirmMenu = new Menu("QUESTION?",2*tileSize,5*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
     confirmMenu.addTextButton("YES", function() {
@@ -128,7 +140,7 @@ var inGameMenu = (function() {
     });
     cheatsMenu.backButton = cheatsMenu.buttons[cheatsMenu.buttons.length-1];
 
-    var menus = [menu, practiceMenu, confirmMenu, cheatsMenu];
+    var menus = [menu, practiceMenu, confirmMenu, cheatsMenu, bossMenu];
     var getVisibleMenu = function() {
         var len = menus.length;
         var i;
@@ -169,6 +181,9 @@ var inGameMenu = (function() {
         },
         getMenu: function() {
             return getVisibleMenu();
+        },
+        getBossMenu() {
+            return bossMenu;
         },
         getMenuButton: function() {
             return btn;
