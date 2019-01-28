@@ -3,7 +3,7 @@ var atlas = (function(){
 
     var canvas,ctx;
     var size = 22;
-    var cols = 14; // has to be ONE MORE than intended to fix some sort of CHROME BUG (last cell always blank?)
+    var cols = 15; // has to be ONE MORE than intended to fix some sort of CHROME BUG (last cell always blank?)
     var rows = 22;
 
     var creates = 0;
@@ -259,6 +259,12 @@ var atlas = (function(){
         row++;
         drawMsOttoCells(row,0, DIR_DOWN);
         drawMsOttoCells(row,4, DIR_LEFT);
+
+        row++;
+        drawAtCell(function(x,y) { drawMonero(ctx,x,y); },      row,0);
+        drawAtCell(function(x,y) { drawBitcoin(ctx,x,y); },      row,1);
+        drawAtCell(function(x,y) { drawRipple(ctx,x,y); },      row,2);
+        drawAtCell(function(x,y) { drawGrin(ctx,x,y); },      row,2);
 
     };
 
