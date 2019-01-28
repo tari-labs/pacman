@@ -91,7 +91,7 @@ var getGhostNames = function(mode) {
         return ["blinky","pinky","inky","sue"];
     }
     else if (mode == GAME_PACMAN) {
-        return ["blinky","pinky","inky","clyde"];
+        return ["roger","jihan","vitalik","craig"];
     }
     else if (mode == GAME_COOKIE) {
         return ["elmo","piggy","rosita","zoe"];
@@ -169,7 +169,7 @@ var clearCheats, backupCheats, restoreCheats;
 
 // current level, lives, and score
 var level = 1;
-var extraLives = 0;
+var extraLives = 100;
 
 // VCR functions
 

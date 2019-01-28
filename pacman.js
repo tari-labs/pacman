@@ -251,7 +251,7 @@ var getGhostNames = function(mode) {
         return ["blinky","pinky","inky","sue"];
     }
     else if (mode == GAME_PACMAN) {
-        return ["blinky","pinky","inky","clyde"];
+        return ["roger","jihan","vitalik","craig"];
     }
     else if (mode == GAME_COOKIE) {
         return ["elmo","piggy","rosita","zoe"];
@@ -329,7 +329,7 @@ var clearCheats, backupCheats, restoreCheats;
 
 // current level, lives, and score
 var level = 1;
-var extraLives = 0;
+var extraLives = 100;
 
 // VCR functions
 
@@ -6580,7 +6580,7 @@ var drawCherry = function(ctx,x,y) {
         ctx.lineWidth = 1.0;
         ctx.strokeStyle = "#000";
         ctx.stroke();
-        ctx.fillStyle = "#ff0000";
+        ctx.fillStyle = "#00ff00";
         ctx.fill();
 
         // white shine
