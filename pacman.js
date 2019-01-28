@@ -171,7 +171,7 @@ var practiceMode = false;
 var turboMode = false;
 
 // current game mode
-var gameMode = GAME_PACMAN;
+var gameMode = GAME_MSPACMAN;
 var getGameName = (function(){
 
     var names = ["PAC-MAN", "MS PAC-MAN", "COOKIE-MAN","CRAZY OTTO"];
@@ -248,7 +248,7 @@ var getGhostNames = function(mode) {
         return ["plato","darwin","freud","newton"];
     }
     else if (mode == GAME_MSPACMAN) {
-        return ["blinky","pinky","inky","sue"];
+        return ["roger","jihan","vitalik","craig"];
     }
     else if (mode == GAME_PACMAN) {
         return ["roger","jihan","vitalik","craig"];
