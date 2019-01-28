@@ -52,7 +52,7 @@ var inGameMenu = (function() {
     });
     menu.addTextButton("QUIT", function() {
         showConfirm("QUIT GAME?", function() {
-            switchState(homeState, 60);
+            switchState(preNewGameState, 60);
         });
     });
     menu.backButton = menu.buttons[0];
@@ -80,7 +80,7 @@ var inGameMenu = (function() {
     });
     practiceMenu.addTextButton("QUIT", function() {
         showConfirm("QUIT GAME?", function() {
-            switchState(homeState, 60);
+            switchState(preNewGameState, 60);
             clearCheats();
             vcr.reset();
         });

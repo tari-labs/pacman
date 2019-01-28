@@ -11,7 +11,7 @@ var practiceMode = false;
 var turboMode = false;
 
 // current game mode
-var gameMode = GAME_PACMAN;
+var gameMode = GAME_MSPACMAN;
 var getGameName = (function(){
 
     var names = ["PAC-MAN", "MS PAC-MAN", "COOKIE-MAN","CRAZY OTTO"];
