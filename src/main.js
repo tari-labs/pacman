@@ -20,7 +20,7 @@ window.addEventListener("load", function() {
 		}
 	}
 	else {
-		switchState(homeState);
+		switchState(preNewGameState);
 	}
     executive.init();
 });

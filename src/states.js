@@ -161,152 +161,10 @@ var homeState = (function(){
 // Learn State
 
 var learnState = (function(){
-
-    var exitTo = function(s) {
-        switchState(s);
-        menu.disable();
-        forEachCharBtn(function (btn) {
-            btn.disable();
-        });
-        setAllVisibility(true);
-        clearCheats();
-    };
-
-    var menu = new Menu("LEARN", 2*tileSize,-tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
-    menu.addSpacer(7);
-    menu.addTextButton("BACK",
-        function() {
-            exitTo(homeState);
-        });
-    menu.backButton = menu.buttons[menu.buttonCount-1];
-    menu.noArrowKeys = true;
-
-    var pad = tileSize;
-    var w = 30;
-    var h = 30;
-    var x = mapWidth/2 - 2*(w) - 1.5*pad;
-    var y = 4*tileSize;
-    var redBtn = new Button(x,y,w,h,function(){
-        setAllVisibility(false);
-        blinky.isVisible = true;
-        setVisibility(blinky,true);
-    });
-    redBtn.setIcon(function (ctx,x,y,frame) {
-        getGhostDrawFunc()(ctx,x,y,Math.floor(frame/6)%2,DIR_DOWN,undefined,undefined,undefined,blinky.color);
-    });
-    x += w+pad;
-    var pinkBtn = new Button(x,y,w,h,function(){
-        setAllVisibility(false);
-        setVisibility(pinky,true);
-    });
-    pinkBtn.setIcon(function (ctx,x,y,frame) {
-        getGhostDrawFunc()(ctx,x,y,Math.floor(frame/6)%2,DIR_DOWN,undefined,undefined,undefined,pinky.color);
-    });
-    x += w+pad;
-    var cyanBtn = new Button(x,y,w,h,function(){
-        setAllVisibility(false);
-        setVisibility(inky,true);
-    });
-    cyanBtn.setIcon(function (ctx,x,y,frame) {
-        getGhostDrawFunc()(ctx,x,y,Math.floor(frame/6)%2,DIR_DOWN,undefined,undefined,undefined,inky.color);
-    });
-    x += w+pad;
-    var orangeBtn = new Button(x,y,w,h,function(){
-        setAllVisibility(false);
-        setVisibility(clyde,true);
-    });
-    orangeBtn.setIcon(function (ctx,x,y,frame) {
-        getGhostDrawFunc()(ctx,x,y,Math.floor(frame/6)%2,DIR_DOWN,undefined,undefined,undefined,clyde.color);
-    });
-    var forEachCharBtn = function(callback) {
-        callback(redBtn);
-        callback(pinkBtn);
-        callback(cyanBtn);
-        callback(orangeBtn);
-    };
-
-    var setVisibility = function(g,visible) {
-        g.isVisible = g.isDrawTarget = g.isDrawPath = visible;
-    };
-
-    var setAllVisibility = function(visible) {
-        setVisibility(blinky,visible);
-        setVisibility(pinky,visible);
-        setVisibility(inky,visible);
-        setVisibility(clyde,visible);
-    };
-
     return {
-        init: function() {
-
-            menu.enable();
-            forEachCharBtn(function (btn) {
-                btn.enable();
-            });
-
-            // set map
-            map = mapLearn;
-            renderer.drawMap();
-
-            // set game parameters
-            level = 1;
-            practiceMode = false;
-            turboMode = false;
-            gameMode = GAME_PACMAN;
-
-            // reset relevant game state
-            ghostCommander.reset();
-            energizer.reset();
-            ghostCommander.setCommand(GHOST_CMD_CHASE);
-            ghostReleaser.onNewLevel();
-            elroyTimer.onNewLevel();
-
-            // set ghost states
-            for (i=0; i<4; i++) {
-                var a = actors[i];
-                a.reset();
-                a.mode = GHOST_OUTSIDE;
-            }
-            blinky.setPos(14*tileSize-1, 13*tileSize+midTile.y);
-            pinky.setPos(15*tileSize+midTile.x, 13*tileSize+midTile.y);
-            inky.setPos(9*tileSize+midTile.x, 16*tileSize+midTile.y);
-            clyde.setPos(18*tileSize+midTile.x, 16*tileSize+midTile.y);
-
-            // set pacman state
-            pacman.reset();
-            pacman.setPos(14*tileSize-1,22*tileSize+midTile.y);
-
-            // start with red ghost
-            redBtn.onclick();
-
-        },
-        draw: function() {
-            renderer.blitMap();
-            renderer.renderFunc(menu.draw,menu);
-            forEachCharBtn(function (btn) {
-                renderer.renderFunc(btn.draw,btn);
-            });
-            renderer.beginMapClip();
-            renderer.drawPaths();
-            renderer.drawActors();
-            renderer.drawTargets();
-            renderer.endMapClip();
-        },
-        update: function() {
-            menu.update();
-            forEachCharBtn(function (btn) {
-                btn.update();
-            });
-            var i,j;
-            for (j=0; j<2; j++) {
-                pacman.update(j);
-                for (i=0;i<4;i++) {
-                    actors[i].update(j);
-                }
-            }
-            for (i=0; i<5; i++)
-                actors[i].frames++;
-        },
+        init: function() {},
+        draw: function() {},
+        update: function() {},
         getMenu: function() {
             return menu;
         },
@@ -485,7 +343,7 @@ var preNewGameState = (function() {
     menu.addSpacer(0.5);
     menu.addTextButton("BACK",
         function() {
-            exitTo(homeState);
+            exitTo(preNewGameState);
         });
     menu.backButton = menu.buttons[menu.buttonCount-1];
 
@@ -849,7 +707,7 @@ var scoreState = (function(){
     var menu = new Menu("", 2*tileSize,mapHeight-6*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
     menu.addTextButton("BACK",
         function() {
-            exitTo(homeState);
+            exitTo(preNewGameState);
         });
     menu.backButton = menu.buttons[menu.buttonCount-1];
 
@@ -1085,7 +943,7 @@ var aboutState = (function(){
         });
     menu.addTextButton("BACK",
         function() {
-            exitTo(homeState);
+            exitTo(preNewGameState);
         });
     menu.backButton = menu.buttons[menu.buttonCount-1];
 
@@ -1629,7 +1487,7 @@ var overState = (function() {
         },
         update: function() {
             if (frames == 120) {
-                switchState(homeState,60);
+                switchState(preNewGameState,60);
             }
             else
                 frames++;
