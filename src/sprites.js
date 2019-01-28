@@ -1743,7 +1743,7 @@ var drawCherry = function(ctx,x,y) {
         ctx.lineWidth = 1.0;
         ctx.strokeStyle = "#000";
         ctx.stroke();
-        ctx.fillStyle = "#00ff00";
+        ctx.fillStyle = "#ff0000";
         ctx.fill();
 
         // white shine
