@@ -169,7 +169,7 @@ var clearCheats, backupCheats, restoreCheats;
 
 // current level, lives, and score
 var level = 1;
-var extraLives = 100;
+var extraLives = 0;
 
 // VCR functions
 
@@ -207,10 +207,10 @@ var scores = [
     0,0, // otto
     0 ];
 var highScores = [
-    10000,10000, // pacman
-    10000,10000, // mspac
-    10000,10000, // cookie
-    10000,10000, // otto
+    1000,1000, // pacman
+    1000,1000, // mspac
+    1000,1000, // cookie
+    1000,1000, // otto
     ];
 
 var getScoreIndex = function() {
