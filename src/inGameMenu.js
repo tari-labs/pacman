@@ -179,7 +179,7 @@ var inGameMenu = (function() {
         getMenu: function() {
             return getVisibleMenu();
         },
-        getBossMenu() {
+        getBossMenu: function() {
             return bossMenu;
         },
         getMenuButton: function() {

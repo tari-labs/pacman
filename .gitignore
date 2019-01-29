@@ -1,4 +1,5 @@
 pacman.js
+pacman.min.js
 *.pyc
 index.htm.bak
 debug.htm
