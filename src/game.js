@@ -14,7 +14,7 @@ var turboMode = false;
 var gameMode = GAME_MSPACMAN;
 var getGameName = (function(){
 
-    var names = ["PAC-MAN", "MS PAC-MAN", "COOKIE-MAN","CRAZY OTTO"];
+    var names = ["PAC-MAN", "MS FLUFFY", "COOKIE-MAN","CRAZY OTTO"];
     
     return function(mode) {
         if (mode == undefined) {
@@ -38,13 +38,13 @@ var getGameDescription = (function(){
             "SHAUN WILLIAMS",
         ],
         [
-            "ORIGINAL ARCADE ADDON:",
-            "MIDWAY/GCC (C) 1981",
+            "TARI LABS CRYPTO EDITION",
+            "BE/SAFE/OUT/THERE (C) 2019",
             "",
             "REVERSE-ENGINEERING:",
             "BART GRANTHAM",
             "",
-            "REMAKE:",
+            "GRUNT WORK:",
             "SHAUN WILLIAMS",
         ],
         [
@@ -88,7 +88,7 @@ var getGhostNames = function(mode) {
         return ["plato","darwin","freud","newton"];
     }
     else if (mode == GAME_MSPACMAN) {
-        return ["blinky","pinky","inky","sue"];
+        return ["rver","jwu","cwright","dlarimer"];
     }
     else if (mode == GAME_PACMAN) {
         return ["roger","jihan","vitalik","craig"];
