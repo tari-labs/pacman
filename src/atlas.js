@@ -237,6 +237,7 @@ var atlas = (function(){
         drawAtCell(function(x,y) { drawMsPacPoints(ctx, x,y, 1000, "#fff"); }, row, 4);
         drawAtCell(function(x,y) { drawMsPacPoints(ctx, x,y, 2000, "#fff"); }, row, 5);
         drawAtCell(function(x,y) { drawMsPacPoints(ctx, x,y, 5000, "#fff"); }, row, 6);
+        drawAtCell(function(x,y) { drawMsPacPoints(ctx, x,y, -100, "#fff"); }, row, 7);
 
         row++;
         drawAtCell(function(x,y) {
@@ -326,6 +327,7 @@ var atlas = (function(){
             1000: 4,
             2000: 5,
             5000: 6,
+            "-100": 7,
         }[points];
         if (col != undefined) {
             copyCellTo(row, col, destCtx, x, y);
@@ -487,7 +489,7 @@ var atlas = (function(){
     };
 
     var copyFruitSprite = function(destCtx,x,y,name) {
-        var row = 0;
+        var row = ["monero", "bitcoin", "ripple", "grin", "tari"].includes(name) ? 21 : 0;
         var col = {
             "cherry": 0,
             "strawberry": 1,
