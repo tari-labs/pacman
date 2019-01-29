@@ -22,15 +22,12 @@ var inGameMenu = (function() {
     btn.setFont(tileSize+"px ArcadeR","#FFF");
 
     // boss menu
-    var bossMenu = new Menu("BOSS!",2*tileSize,5*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px" +
-        " ArcadeR", "#EEE");
-    bossMenu.addTextButton("RESUME", function() {
-        bossMenu.disable();
-    });
-    bossMenu.backButton = bossMenu.buttons[0];
+    var bossMenu = new Menu(undefined, 2*tileSize,5*tileSize,mapWidth-4*tileSize,3*tileSize, tileSize, "10px Dos437,courier", "#fff");
+    bossMenu.hidden = { onclick: function() {bossMenu.disable();}};
+    bossMenu.backButton = bossMenu.hidden;
     // override boss menu draw function
     bossMenu.draw = function(ctx) {
-        loadBoss(ctx);
+        loadBoss(ctx, level, this.x, this.y);
     };
 
     // confirms a menu action
@@ -110,7 +107,7 @@ var inGameMenu = (function() {
         draw: function(ctx) {
             var m = getVisibleMenu();
             if (m) {
-                ctx.fillStyle = "rgba(0,0,0,0.8)";
+                ctx.fillStyle = "rgba(0,0,0,0.9)";
                 ctx.fillRect(-mapPad-1,-mapPad-1,mapWidth+1,mapHeight+1);
                 m.draw(ctx);
             }
