@@ -73,21 +73,6 @@ var inGameMenu = (function() {
     practiceMenu.addTextButton("RESUME", function() {
         hideMainMenu();
     });
-    practiceMenu.addTextButton("RESTART LEVEL", function() {
-        showConfirm("RESTART LEVEL?", function() {
-            level--;
-            switchState(readyNewState, 60);
-        });
-    });
-    practiceMenu.addTextButton("SKIP LEVEL", function() {
-        showConfirm("SKIP LEVEL?", function() {
-            switchState(readyNewState, 60);
-        });
-    });
-    practiceMenu.addTextButton("CHEATS", function() {
-        practiceMenu.disable();
-        cheatsMenu.enable();
-    });
     practiceMenu.addTextButton("QUIT", function() {
         showConfirm("QUIT GAME?", function() {
             switchState(preNewGameState, 60);
@@ -96,48 +81,8 @@ var inGameMenu = (function() {
     });
     practiceMenu.backButton = practiceMenu.buttons[0];
 
-    // cheats menu
-    var cheatsMenu = new Menu("CHEATS",2*tileSize,5*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
-    cheatsMenu.addToggleTextButton("INVINCIBLE",
-        function() {
-            return pacman.invincible;
-        },
-        function(on) {
-            pacman.invincible = on;
-        });
-    cheatsMenu.addToggleTextButton("TURBO",
-        function() {
-            return turboMode;
-        },
-        function(on) {
-            turboMode = on;
-        });
-    cheatsMenu.addToggleTextButton("SHOW TARGETS",
-        function() {
-            return blinky.isDrawTarget;
-        },
-        function(on) {
-            for (var i=0; i<4; i++) {
-                ghosts[i].isDrawTarget = on;
-            }
-        });
-    cheatsMenu.addToggleTextButton("SHOW PATHS",
-        function() {
-            return blinky.isDrawPath;
-        },
-        function(on) {
-            for (var i=0; i<4; i++) {
-                ghosts[i].isDrawPath = on;
-            }
-        });
-    cheatsMenu.addSpacer(1);
-    cheatsMenu.addTextButton("BACK", function() {
-        cheatsMenu.disable();
-        practiceMenu.enable();
-    });
-    cheatsMenu.backButton = cheatsMenu.buttons[cheatsMenu.buttons.length-1];
 
-    var menus = [menu, practiceMenu, confirmMenu, cheatsMenu, bossMenu];
+    var menus = [menu, practiceMenu, confirmMenu, bossMenu];
     var getVisibleMenu = function() {
         var len = menus.length;
         var i;
