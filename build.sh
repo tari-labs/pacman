@@ -66,6 +66,7 @@ for file in \
     cutscenes.js \
     maps.js \
     vcr.js \
+    boss.js \
     main.js
 do
     # points firebug to correct file (or so I hoped)
