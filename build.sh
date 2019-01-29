@@ -45,7 +45,6 @@ for file in \
     atlas.js \
     renderers.js  \
     hud.js \
-    galagaStars.js \
     Button.js \
     Menu.js \
     inGameMenu.js \
