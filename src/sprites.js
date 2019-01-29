@@ -587,6 +587,15 @@ var drawMsPacPoints = (function(){
         ctx.stroke();
     };
 
+    var drawNeg = function(x,y) {
+        ctx.save();
+        ctx.translate(x,y);
+        plotLine([
+            -4,2,
+            -1,2,
+        ],color);
+        ctx.restore();
+    };
 
     var draw0 = function(x,y) {
         ctx.save();
@@ -655,6 +664,13 @@ var drawMsPacPoints = (function(){
         draw0(3,1);
     };
 
+    var drawNeg100 = function() {
+        drawNeg(-5, -5);
+        draw1(-5,-5);
+        draw0(-1,-2);
+        draw0(3,1);
+    };
+
     var draw200 = function() {
         draw2(-5,-5);
         draw0(-1,-2);
@@ -708,6 +724,7 @@ var drawMsPacPoints = (function(){
             1000: draw1000,
             2000: draw2000,
             5000: draw5000,
+            "-100": drawNeg100,
         }[points];
 
         if (f) {
