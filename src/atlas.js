@@ -265,7 +265,8 @@ var atlas = (function(){
         drawAtCell(function(x,y) { drawMonero(ctx,x,y); },      row,0);
         drawAtCell(function(x,y) { drawBitcoin(ctx,x,y); },      row,1);
         drawAtCell(function(x,y) { drawRipple(ctx,x,y); },      row,2);
-        drawAtCell(function(x,y) { drawGrin(ctx,x,y); },      row,2);
+        drawAtCell(function(x,y) { drawGrin(ctx,x,y); },      row,3);
+        drawAtCell(function(x,y) { drawTari(ctx,x,y); },      row,4);
 
     };
 

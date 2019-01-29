@@ -2392,6 +2392,7 @@ var getSpriteFuncFromFruitName = function(name) {
         'bitcoin': drawBitcoin,
         'ripple': drawRipple,
         'grin': drawGrin,
+        'tari': drawTari,
     };
 
     return funcs[name];
@@ -2711,11 +2712,11 @@ var drawRipple = function(ctx, x, y) {
 
 var drawGrin = function(ctx, x, y) {
     ctx.save();
-    ctx.translate(x,y);
-    ctx.transform(0.0965, 0,0, 0.0965, 10, -11);
+    ctx.translate(x-11,y-11);
+    ctx.scale(0.0965, 0.0965);
     // Yellow Circle
-    ctx.beginPath();
     ctx.fillStyle="rgb(254,241,2)";
+    ctx.beginPath();
     ctx.arc(121.8,122,85.25,0,Math.PI * 2,true);
     ctx.closePath();
     ctx.fill("evenodd");
@@ -2767,5 +2768,14 @@ var drawGrin = function(ctx, x, y) {
     ctx.closePath();
     ctx.fill("nonzero");
     ctx.stroke();
+    ctx.restore();
+};
+
+var drawTari = function(ctx, x, y) {
+    ctx.save();
+    ctx.translate(x, y);
+    ctx.fillStyle = "#900090";
+    ctx.strokeStyle = "#900090";
+    ctx.fillRect(-6, -6, 12, 12);
     ctx.restore();
 };
