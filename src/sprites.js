@@ -2368,13 +2368,13 @@ var getSpriteFuncFromFruitName = function(name) {
         'orange': drawOrange,
         'apple': drawApple,
         'melon': drawMelon,
-        'galaxian': drawGalaxian,
-        'bell': drawBell,
         'key': drawKey,
-        'pretzel': drawPretzel,
-        'pear': drawPear,
         'banana': drawBanana,
         'cookie': drawCookie,
+        'monero': drawMonero,
+        'bitcoin': drawBitcoin,
+        'ripple': drawRipple,
+        'grin': drawGrin,
     };
 
     return funcs[name];
@@ -2539,5 +2539,242 @@ var drawExclamationPoint = function(ctx,x,y) {
     ctx.fill();
     ctx.stroke();
 
+    ctx.restore();
+};
+
+var drawMonero = function(ctx,x,y) {
+    ctx.save();
+    ctx.translate(x-9,y-9);
+    ctx.fillStyle="#ff6600";
+    ctx.scale(8,8);
+    ctx.lineWidth=0.05;
+    ctx.beginPath();
+    ctx.moveTo(1.12688,0);
+    ctx.bezierCurveTo(0.5049,-0.002,0.0005,0.5024,0.0005,1.12441);
+    ctx.bezierCurveTo(0.0005,1.24873,0.0207,1.36831,0.0579,1.4802);
+    ctx.lineTo(0.39478,1.4802);
+    ctx.lineTo(0.39478,0.53246);
+    ctx.lineTo(1.12694,1.26463);
+    ctx.lineTo(1.85908,0.53246);
+    ctx.lineTo(1.85908,1.48019);
+    ctx.lineTo(2.19596,1.48019);
+    ctx.bezierCurveTo(2.23316,1.3683,2.25336,1.24872,2.25336,1.1244);
+    ctx.bezierCurveTo(2.25335,0.50237,1.74895,-0.002,1.12694,-0.002);
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle="#4c4c4c";
+    ctx.lineWidth=0.05;
+    ctx.beginPath();
+    ctx.moveTo(0.95853,1.43297);
+    ctx.lineTo(0.639,1.11343);
+    ctx.lineTo(0.639,1.70977);
+    ctx.lineTo(0.16438,1.70977);
+    ctx.bezierCurveTo(0.36212,2.03417,0.7192299999999999,2.2508,1.12686,2.2508);
+    ctx.bezierCurveTo(1.53449,2.2508,1.89164,2.03417,2.08935,1.7097699999999998);
+    ctx.lineTo(1.61474,1.7097699999999998);
+    ctx.lineTo(1.61474,1.11342);
+    ctx.lineTo(1.29521,1.43295);
+    ctx.lineTo(1.12687,1.60129);
+    ctx.lineTo(0.95854,1.43296);
+    ctx.lineTo(0.95853,1.43296);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+};
+
+var drawBitcoin = function(ctx, x, y) {
+    ctx.save();
+    ctx.translate(x-9,y-9);
+    ctx.strokeStyle="rgba(0,0,0,0)";
+    ctx.scale(0.275, 0.275);
+    ctx.miterLimit=4;
+    ctx.translate(0.00630876,-0.00301984);
+    ctx.fillStyle="#f7931a";
+    ctx.beginPath();
+    ctx.moveTo(63.033,39.744);
+    ctx.bezierCurveTo(58.759,56.887,41.396,67.32,24.251000000000005,63.045);
+    ctx.bezierCurveTo(7.113000000000003,58.771,-3.3199999999999967,41.407,0.9560000000000031,24.265);
+    ctx.bezierCurveTo(5.228000000000003,7.120000000000001,22.591000000000005,-3.314,39.731,0.9600000000000009);
+    ctx.bezierCurveTo(56.875,5.234000000000001,67.307,22.6,63.033,39.744);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.fillStyle="#FFF";
+    ctx.beginPath();
+    ctx.moveTo(46.103,27.444);
+    ctx.bezierCurveTo(46.74,23.186,43.498000000000005,20.897,39.065,19.369999999999997);
+    ctx.lineTo(40.503,13.601999999999997);
+    ctx.lineTo(36.992,12.726999999999997);
+    ctx.lineTo(35.592,18.342999999999996);
+    ctx.bezierCurveTo(34.669,18.112999999999996,33.721,17.895999999999997,32.778999999999996,17.680999999999997);
+    ctx.lineTo(34.18899999999999,12.027999999999999);
+    ctx.lineTo(30.679999999999993,11.152999999999999);
+    ctx.lineTo(29.240999999999993,16.918999999999997);
+    ctx.bezierCurveTo(28.476999999999993,16.744999999999997,27.726999999999993,16.572999999999997,26.99899999999999,16.391999999999996);
+    ctx.lineTo(27.002999999999993,16.373999999999995);
+    ctx.lineTo(22.160999999999994,15.164999999999996);
+    ctx.lineTo(21.226999999999993,18.914999999999996);
+    ctx.bezierCurveTo(21.226999999999993,18.914999999999996,23.831999999999994,19.511999999999997,23.776999999999994,19.548999999999996);
+    ctx.bezierCurveTo(25.198999999999995,19.903999999999996,25.455999999999992,20.844999999999995,25.412999999999993,21.590999999999994);
+    ctx.lineTo(23.77499999999999,28.161999999999992);
+    ctx.bezierCurveTo(23.87299999999999,28.18699999999999,23.999999999999993,28.222999999999992,24.13999999999999,28.278999999999993);
+    ctx.bezierCurveTo(24.02299999999999,28.249999999999993,23.89799999999999,28.217999999999993,23.76899999999999,28.186999999999994);
+    ctx.lineTo(21.472999999999992,37.391999999999996);
+    ctx.bezierCurveTo(21.298999999999992,37.824,20.857999999999993,38.471999999999994,19.86399999999999,38.226);
+    ctx.bezierCurveTo(19.89899999999999,38.277,17.31199999999999,37.589,17.31199999999999,37.589);
+    ctx.lineTo(15.56899999999999,41.608);
+    ctx.lineTo(20.13799999999999,42.747);
+    ctx.bezierCurveTo(20.987999999999992,42.96,21.82099999999999,43.183,22.64099999999999,43.393);
+    ctx.lineTo(21.18799999999999,49.227000000000004);
+    ctx.lineTo(24.694999999999993,50.102000000000004);
+    ctx.lineTo(26.133999999999993,44.330000000000005);
+    ctx.bezierCurveTo(27.09199999999999,44.59,28.02199999999999,44.830000000000005,28.931999999999995,45.056000000000004);
+    ctx.lineTo(27.497999999999994,50.801);
+    ctx.lineTo(31.008999999999993,51.676);
+    ctx.lineTo(32.461999999999996,45.853);
+    ctx.bezierCurveTo(38.449,46.986000000000004,42.95099999999999,46.529,44.846,41.114000000000004);
+    ctx.bezierCurveTo(46.373,36.754000000000005,44.769999999999996,34.239000000000004,41.62,32.599000000000004);
+    ctx.bezierCurveTo(43.913999999999994,32.07,45.641999999999996,30.561000000000003,46.102999999999994,27.444000000000003);
+    ctx.closePath();
+    ctx.moveTo(38.081,38.693);
+    ctx.bezierCurveTo(36.996,43.053,29.655,40.696,27.275000000000006,40.105);
+    ctx.lineTo(29.203000000000007,32.376);
+    ctx.bezierCurveTo(31.583000000000006,32.97,39.215,34.146,38.081,38.693);
+    ctx.closePath();
+    ctx.moveTo(39.167,27.381);
+    ctx.bezierCurveTo(38.177,31.347,32.067,29.332,30.085,28.838);
+    ctx.lineTo(31.833000000000002,21.828000000000003);
+    ctx.bezierCurveTo(33.815000000000005,22.322000000000003,40.198,23.244000000000003,39.167,27.381000000000004);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+};
+
+var drawRipple = function(ctx, x, y) {
+    ctx.save();
+    ctx.translate(x-10,y-12);
+    ctx.scale(0.12, 0.12);
+    var g = ctx.createLinearGradient(50.5705,45.7015,159.0832,154.2141);
+    g.addColorStop(0,"#11AAE2");
+    g.addColorStop(1,"#016197");
+    ctx.fillStyle= g;
+    ctx.beginPath();
+    ctx.moveTo(137.9,117.2);
+    ctx.bezierCurveTo(132.4,114,126.10000000000001,113.10000000000001,120,112.9);
+    ctx.bezierCurveTo(114.8,112.7,107.1,109.4,107.1,100);
+    ctx.bezierCurveTo(107.1,93,112.8,87.3,120,87.1);
+    ctx.bezierCurveTo(126.2,86.89999999999999,132.4,86,137.9,82.8);
+    ctx.bezierCurveTo(148,77,154.20000000000002,66.19999999999999,154.20000000000002,54.5);
+    ctx.bezierCurveTo(154.20000000000002,42.8,148.00000000000003,32,137.9,26.2);
+    ctx.bezierCurveTo(127.80000000000001,20.4,115.30000000000001,20.4,105.2,26.2);
+    ctx.bezierCurveTo(95,31.9,88.8,42.7,88.8,54.4);
+    ctx.bezierCurveTo(88.8,60.699999999999996,91.1,66.6,93.89999999999999,72);
+    ctx.bezierCurveTo(96.3,76.5,97.49999999999999,85,89.19999999999999,89.8);
+    ctx.bezierCurveTo(82.99999999999999,93.39999999999999,75.29999999999998,91.1,71.49999999999999,85);
+    ctx.bezierCurveTo(68.29999999999998,79.8,64.29999999999998,74.9,58.79999999999998,71.8);
+    ctx.bezierCurveTo(48.69999999999998,66,36.19999999999998,66,26.09999999999998,71.8);
+    ctx.bezierCurveTo(16.1,77.5,9.9,88.3,9.9,100);
+    ctx.bezierCurveTo(9.9,111.7,16.1,122.5,26.299999999999997,128.3);
+    ctx.bezierCurveTo(36.4,134.10000000000002,48.9,134.10000000000002,59,128.3);
+    ctx.bezierCurveTo(64.5,125.10000000000001,68.4,120.30000000000001,71.7,115.10000000000001);
+    ctx.bezierCurveTo(74.4,110.80000000000001,81,105.4,89.4,110.2);
+    ctx.bezierCurveTo(95.60000000000001,113.8,97.5,121.60000000000001,94,128);
+    ctx.bezierCurveTo(91.1,133.4,88.9,139.2,88.9,145.6);
+    ctx.bezierCurveTo(88.9,157.29999999999998,95.10000000000001,168.1,105.2,173.9);
+    ctx.bezierCurveTo(115.3,179.70000000000002,127.80000000000001,179.70000000000002,137.9,173.9);
+    ctx.bezierCurveTo(148,168.1,154.20000000000002,157.3,154.20000000000002,145.6);
+    ctx.bezierCurveTo(154.2,133.9,148,123.1,137.9,117.2);
+    ctx.closePath();
+    ctx.fill();
+    ctx.stroke();
+    ctx.restore();
+};
+
+var drawGrin = function(ctx, x, y) {
+    ctx.save();
+    ctx.translate(x+1,y-10);
+    ctx.scale(0.55, 0.55);
+    ctx.strokeStyle="rgba(0,0,0,0)";
+    ctx.miterLimit=4;
+    ctx.font="normal normal 400 normal 15px / 21.4286px ''";
+    ctx.lineJoin="round";
+    ctx.miterLimit="1.41421";
+    ctx.font="   15px ";
+    ctx.scale(0.047619047619047616,0.047619047619047616);
+    ctx.translate(406,0);
+    ctx.scale(3.557377049180328,3.557377049180328);
+    ctx.miterLimit="1.41421";
+    ctx.font="   15px ";
+    ctx.transform(1.03804,0,0,1.03804,-19.1739,-16.0598);
+    ctx.miterLimit="1.41421";
+    ctx.font="   15px ";
+    ctx.miterLimit="1.41421";
+    ctx.font="   15px ";
+    ctx.beginPath();
+    ctx.arc(136,133,92,0,6.283185307179586,true);
+    ctx.closePath();
+    ctx.fill("evenodd");
+    ctx.stroke();
+    ctx.save();
+    ctx.transform(1.06897,0,0,1.06897,-29.7347,-25.25);
+    ctx.fillStyle="rgb(254,241,2)";
+    ctx.miterLimit="1.41421";
+    ctx.font="   15px ";
+    ctx.beginPath();
+    ctx.arc(141.75,137.75,79.75,0,6.283185307179586,true);
+    ctx.closePath();
+    ctx.fill("evenodd");
+    ctx.stroke();
+    ctx.restore();
+    ctx.miterLimit="1.41421";
+    ctx.font="   15px ";
+    ctx.transform(1,0,0,1,0.208873,-2);
+    ctx.miterLimit="1.41421";
+    ctx.font="   15px ";
+    ctx.beginPath();
+    ctx.moveTo(162,92);
+    ctx.bezierCurveTo(159.966,87.434,158.071,78.413,152.855,76.407);
+    ctx.bezierCurveTo(146.14,73.825,141.989,90.729,141,95);
+    ctx.lineTo(140,95);
+    ctx.bezierCurveTo(138.307,87.682,136.035,77.31,128,75);
+    ctx.bezierCurveTo(124.28,90.624,131.886,107.479,139,121);
+    ctx.bezierCurveTo(146.596,117.37,150.297,106.002,151,98);
+    ctx.lineTo(152,98);
+    ctx.lineTo(160,122);
+    ctx.bezierCurveTo(166.436,120.15,168.675,113.781,170.999,108);
+    ctx.bezierCurveTo(175.988,95.592,180.174,80.332,177,67);
+    ctx.bezierCurveTo(167.395,69.72,164.473,83.455,162,92);
+    ctx.moveTo(66,124);
+    ctx.bezierCurveTo(74.595,119.896,78.685,106.906,80,98);
+    ctx.lineTo(81,98);
+    ctx.bezierCurveTo(82.017,102.293,84.736,113.368,90.1,114.079);
+    ctx.bezierCurveTo(96.934,114.983,100.517,99.819,101,95);
+    ctx.lineTo(102,95);
+    ctx.bezierCurveTo(104.179,102.529,106.475,112.32,114,116);
+    ctx.bezierCurveTo(116.776,104.34,113.452,91.905,109.188,81);
+    ctx.bezierCurveTo(108.092,78.196,105.841,70.636,101.975,70.636);
+    ctx.bezierCurveTo(95.641,70.636,92.08,87.332,91,92);
+    ctx.lineTo(90,92);
+    ctx.lineTo(82,68);
+    ctx.bezierCurveTo(67.928,74.72,60.284,110.453,66,124);
+    ctx.moveTo(51,136);
+    ctx.bezierCurveTo(61.443,181.551,109.612,207.374,153,188.138);
+    ctx.bezierCurveTo(168.791,181.137,181.317,168.663,188.539,153);
+    ctx.bezierCurveTo(190.405,148.953,194.07,141.628,191.933,136.318);
+    ctx.bezierCurveTo(189.805,131.029,169.166,139.671,164.009,141.928);
+    ctx.bezierCurveTo(163.285,142.25,162.774,142.918,162.655,143.702);
+    ctx.bezierCurveTo(162.655,143.702,162.655,143.702,162.655,143.702);
+    ctx.bezierCurveTo(162.486,144.811,162.786,145.941,163.485,146.82);
+    ctx.bezierCurveTo(164.183,147.699,165.216,148.247,166.335,148.333);
+    ctx.bezierCurveTo(170.116,148.624,175,149,175,149);
+    ctx.bezierCurveTo(159.313,179.365,116.899,192.791,87,168.532);
+    ctx.bezierCurveTo(80.308,163.103,74.338,156.652,70.32,149);
+    ctx.bezierCurveTo(68.377,145.3,66.575,140.568,63.272,138.029);
+    ctx.bezierCurveTo(60.099,135.589,55.285,134.753,51,136);
+    ctx.closePath();
+    ctx.fill("nonzero");
+    ctx.stroke();
     ctx.restore();
 };
