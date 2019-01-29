@@ -170,13 +170,13 @@ var PATH_EXIT = 2;
 var MsPacFruit = function() {
     BaseFruit.call(this);
     this.fruits = [
+        {name: 'cherry',     points: 100},
+        {name: 'strawberry', points: 300},
         {name: 'ripple',     points: -100},
-        {name: 'bitcoin',    points: 300},
-        {name: 'grin',       points: 500},
-        {name: 'monero',     points: 700},
-        {name: 'apple',      points: 1000},
-        {name: 'pear',       points: 2000},
-        {name: 'banana',     points: 5000},
+        {name: 'bitcoin',    points: 700},
+        {name: 'grin',      points: 1000},
+        {name: 'monero',    points: 2000},
+        {name: 'tari',     points: 5000},
     ];
 
     this.dotLimit1 = 64;

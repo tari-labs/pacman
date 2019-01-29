@@ -2711,45 +2711,19 @@ var drawRipple = function(ctx, x, y) {
 
 var drawGrin = function(ctx, x, y) {
     ctx.save();
-    ctx.translate(x+1,y-10);
-    ctx.scale(0.55, 0.55);
-    ctx.strokeStyle="rgba(0,0,0,0)";
-    ctx.miterLimit=4;
-    ctx.font="normal normal 400 normal 15px / 21.4286px ''";
-    ctx.lineJoin="round";
-    ctx.miterLimit="1.41421";
-    ctx.font="   15px ";
-    ctx.scale(0.047619047619047616,0.047619047619047616);
-    ctx.translate(406,0);
-    ctx.scale(3.557377049180328,3.557377049180328);
-    ctx.miterLimit="1.41421";
-    ctx.font="   15px ";
-    ctx.transform(1.03804,0,0,1.03804,-19.1739,-16.0598);
-    ctx.miterLimit="1.41421";
-    ctx.font="   15px ";
-    ctx.miterLimit="1.41421";
-    ctx.font="   15px ";
+    ctx.translate(x,y);
+    ctx.transform(0.0965, 0,0, 0.0965, 10, -11);
+    // Yellow Circle
     ctx.beginPath();
-    ctx.arc(136,133,92,0,6.283185307179586,true);
-    ctx.closePath();
-    ctx.fill("evenodd");
-    ctx.stroke();
-    ctx.save();
-    ctx.transform(1.06897,0,0,1.06897,-29.7347,-25.25);
     ctx.fillStyle="rgb(254,241,2)";
-    ctx.miterLimit="1.41421";
-    ctx.font="   15px ";
-    ctx.beginPath();
-    ctx.arc(141.75,137.75,79.75,0,6.283185307179586,true);
+    ctx.arc(121.8,122,85.25,0,Math.PI * 2,true);
     ctx.closePath();
     ctx.fill("evenodd");
     ctx.stroke();
-    ctx.restore();
-    ctx.miterLimit="1.41421";
-    ctx.font="   15px ";
-    ctx.transform(1,0,0,1,0.208873,-2);
-    ctx.miterLimit="1.41421";
-    ctx.font="   15px ";
+    // Black filler
+    ctx.translate(0.2,-2);
+    ctx.fillStyle="#000";
+    ctx.strokeStyle="#000";
     ctx.beginPath();
     ctx.moveTo(162,92);
     ctx.bezierCurveTo(159.966,87.434,158.071,78.413,152.855,76.407);
