@@ -1,0 +1,39 @@
+<html>
+<head>
+    <head>
+        <style>
+            body {
+                background: black;
+                color: white;
+            }
+
+            canvas {
+                position: absolute;
+                left: 0;
+                top: 50px;
+            }
+
+            @font-face {
+                font-family: 'dos437';
+                src: url('../font/Dos437.ttf');
+            }
+
+            p {
+                font-family: dos437, serif;
+            }
+        </style>
+        <script src="../src/boss.js"></script>
+    </head>
+<body>
+<p>Boss Screen 1:</p>
+<canvas width="1000px" height="1000px" id="boss"></canvas>
+
+<script>
+    window.onload = function () {
+        let canvas = document.getElementById('boss');
+        ctx = canvas.getContext("2d");
+        loadBoss(ctx, 0);
+    }
+</script>
+</body>
+</html>
