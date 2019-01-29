@@ -144,12 +144,7 @@ var gameTitleState = (function() {
     var x = mapWidth/2 - 3*w;
     var y = 3*tileSize;
     var yellowBtn = new Button(x,y,w,h,function() {
-        if (gameMode == GAME_MSPACMAN) {
-            gameMode = GAME_OTTO;
-        }
-        else if (gameMode == GAME_OTTO) {
-            gameMode = GAME_MSPACMAN;
-        }
+        gameMode = GAME_MSPACMAN;
     });
     yellowBtn.setIcon(function (ctx,x,y,frame) {
         getPlayerDrawFunc()(ctx,x,y,DIR_RIGHT,pacman.getAnimFrame(pacman.getStepFrame(Math.floor((gameMode==GAME_PACMAN?frame+4:frame)/1.5))),true);
@@ -1030,15 +1025,7 @@ var readyNewState = newChildObject(readyState, {
 
         // increment level and ready the next map
         level++;
-        if (gameMode == GAME_PACMAN) {
-            map = mapPacman;
-        }
-        else if (gameMode == GAME_MSPACMAN || gameMode == GAME_OTTO) {
-            setNextMsPacMap();
-        }
-        else if (gameMode == GAME_COOKIE) {
-            setNextCookieMap();
-        }
+        setNextMsPacMap();
         map.resetCurrent();
         fruit.onNewLevel();
         renderer.drawMap();

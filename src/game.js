@@ -27,16 +27,7 @@ var getGameName = (function(){
 var getGameDescription = (function(){
 
     var desc = [
-        [
-            "ORIGINAL ARCADE:",
-            "NAMCO (C) 1980",
-            "",
-            "REVERSE-ENGINEERING:",
-            "JAMEY PITTMAN",
-            "",
-            "REMAKE:",
-            "SHAUN WILLIAMS",
-        ],
+        [],
         [
             "TARI LABS CRYPTO EDITION",
             "BE/SAFE/OUT/THERE (C) 2019",
@@ -47,29 +38,8 @@ var getGameDescription = (function(){
             "GRUNT WORK:",
             "SHAUN WILLIAMS",
         ],
-        [
-            "A NEW PAC-MAN GAME",
-            "WITH RANDOM MAZES:",
-            "SHAUN WILLIAMS (C) 2012",
-            "",
-            "COOKIE MONSTER DESIGN:",
-            "JIM HENSON",
-            "",
-            "PAC-MAN CROSSOVER CONCEPT:",
-            "TANG YONGFA",
-        ],
-        [
-            "THE UNRELEASED",
-            "MS. PAC-MAN PROTOTYPE:",
-            "GCC (C) 1981",
-            "",
-            "SPRITES REFERENCED FROM",
-            "STEVE GOLSON'S",
-            "CAX 2012 PRESENTATION",
-            "",
-            "REMAKE:",
-            "SHAUN WILLIAMS",
-        ],
+        [],
+        [],
     ];
     
     return function(mode) {
@@ -81,55 +51,16 @@ var getGameDescription = (function(){
 })();
 
 var getGhostNames = function(mode) {
-    if (mode == undefined) {
-        mode = gameMode;
-    }
-    if (mode == GAME_OTTO) {
-        return ["plato","darwin","freud","newton"];
-    }
-    else if (mode == GAME_MSPACMAN) {
-        return ["rver","jwu","cwright","dlarimer"];
-    }
-    else if (mode == GAME_PACMAN) {
-        return ["roger","jihan","vitalik","craig"];
-    }
-    else if (mode == GAME_COOKIE) {
-        return ["elmo","piggy","rosita","zoe"];
-    }
+    return ["rver","jwu","cwright","dlarimer"];
 };
 
 var getGhostDrawFunc = function(mode) {
-    if (mode == undefined) {
-        mode = gameMode;
-    }
-    if (mode == GAME_OTTO) {
-        return atlas.drawMonsterSprite;
-    }
-    else if (mode == GAME_COOKIE) {
-        return atlas.drawMuppetSprite;
-    }
-    else {
-        return atlas.drawGhostSprite;
-    }
+    return atlas.drawGhostSprite;
+
 };
 
 var getPlayerDrawFunc = function(mode) {
-    if (mode == undefined) {
-        mode = gameMode;
-    }
-    if (mode == GAME_OTTO) {
-        return atlas.drawOttoSprite;
-    }
-    else if (mode == GAME_PACMAN) {
-        return atlas.drawPacmanSprite;
-    }
-    else if (mode == GAME_MSPACMAN) {
-        return atlas.drawMsPacmanSprite;
-    }
-    else if (mode == GAME_COOKIE) {
-        //return atlas.drawCookiemanSprite;
-        return drawCookiemanSprite;
-    }
+    return atlas.drawMsPacmanSprite;
 };
 
 

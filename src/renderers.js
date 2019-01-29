@@ -747,48 +747,12 @@ var initRenderer = function(){
                     bgCtx.translate(3*tileSize, (numRows-1)*tileSize);
                     bgCtx.scale(0.85, 0.85);
                     var lives = extraLives == Infinity ? 1 : extraLives;
-                    if (gameMode == GAME_PACMAN) {
-                        for (i=0; i<lives; i++) {
-                            drawPacmanSprite(bgCtx, 0,0, DIR_LEFT, Math.PI/6);
-                            bgCtx.translate(2*tileSize,0);
-                        }
-                    }
-                    else if (gameMode == GAME_MSPACMAN) {
-                        for (i=0; i<lives; i++) {
-                            drawMsPacmanSprite(bgCtx, 0,0, DIR_RIGHT, 1);
-                            bgCtx.translate(2*tileSize,0);
-                        }
-                    }
-                    else if (gameMode == GAME_COOKIE) {
-                        for (i=0; i<lives; i++) {
-                            drawCookiemanSprite(bgCtx, 0,0, DIR_RIGHT, 1, false);
-                            bgCtx.translate(2*tileSize,0);
-                        }
-                    }
-                    else if (gameMode == GAME_OTTO) {
-                        for (i=0; i<lives; i++) {
-                            drawOttoSprite(bgCtx, 0,0,DIR_RIGHT, 0);
-                            bgCtx.translate(2*tileSize,0);
-                        }
+                    for (i=0; i<lives; i++) {
+                        drawMsPacmanSprite(bgCtx, 0,0, DIR_RIGHT, 1);
+                        bgCtx.translate(2*tileSize,0);
                     }
                     if (extraLives == Infinity) {
                         bgCtx.translate(-4*tileSize,0);
-
-                        // draw X
-                        /*
-                        bgCtx.translate(-s*2,0);
-                        var s = 2; // radius of each stroke
-                        bgCtx.beginPath();
-                        bgCtx.moveTo(-s,-s);
-                        bgCtx.lineTo(s,s);
-                        bgCtx.moveTo(-s,s);
-                        bgCtx.lineTo(s,-s);
-                        bgCtx.lineWidth = 1;
-                        bgCtx.strokeStyle = "#777";
-                        bgCtx.stroke();
-                        */
-
-                        // draw Infinity symbol
                         var r = 2; // radius of each half-circle
                         var d = 3; // distance between the two focal points
                         bgCtx.beginPath();
@@ -961,57 +925,11 @@ var initRenderer = function(){
         // draw dying pacman animation (with 0<=t<=1)
         drawDyingPlayer: function(t) {
             var frame = pacman.getAnimFrame();
-
-            if (gameMode == GAME_PACMAN) {
-                // 60 frames dying
-                // 15 frames exploding
-                var f = t*75;
-                if (f <= 60) {
-                    // open mouth all the way while shifting corner of mouth forward
-                    t = f/60;
-                    var a = frame*Math.PI/6;
-                    drawPacmanSprite(ctx, pacman.pixel.x, pacman.pixel.y, pacman.dirEnum, a + t*(Math.PI-a),4*t);
-                }
-                else {
-                    // explode
-                    f -= 60;
-                    this.drawExplodingPlayer(f/15);
-                }
-            }
-            else if (gameMode == GAME_OTTO) {
-                // TODO: spin around
-                if (t < 0.8) {
-                    var dirEnum = Math.floor((pacman.dirEnum - t*16))%4;
-                    if (dirEnum < 0) {
-                        dirEnum += 4;
-                    }
-                    drawOttoSprite(ctx, pacman.pixel.x, pacman.pixel.y, dirEnum, 0);
-                }
-                else if (t < 0.95) {
-                    var dirEnum = Math.floor((pacman.dirEnum - 0.8*16))%4;
-                    if (dirEnum < 0) {
-                        dirEnum += 4;
-                    }
-                    drawOttoSprite(ctx, pacman.pixel.x, pacman.pixel.y, dirEnum, 0);
-                }
-                else {
-                    drawDeadOttoSprite(ctx,pacman.pixel.x, pacman.pixel.y);
-                }
-            }
-            else if (gameMode == GAME_MSPACMAN) {
-                // spin 540 degrees
-                var maxAngle = Math.PI*5;
-                var step = (Math.PI/4) / maxAngle; // 45 degree steps
-                var angle = Math.floor(t/step)*step*maxAngle;
-                drawMsPacmanSprite(ctx, pacman.pixel.x, pacman.pixel.y, pacman.dirEnum, frame, angle);
-            }
-            else if (gameMode == GAME_COOKIE) {
-                // spin 540 degrees
-                var maxAngle = Math.PI*5;
-                var step = (Math.PI/4) / maxAngle; // 45 degree steps
-                var angle = Math.floor(t/step)*step*maxAngle;
-                drawCookiemanSprite(ctx, pacman.pixel.x, pacman.pixel.y, pacman.dirEnum, frame, false, angle);
-            }
+            // spin 540 degrees
+            var maxAngle = Math.PI*5;
+            var step = (Math.PI/4) / maxAngle; // 45 degree steps
+            var angle = Math.floor(t/step)*step*maxAngle;
+            drawMsPacmanSprite(ctx, pacman.pixel.x, pacman.pixel.y, pacman.dirEnum, frame, angle);
         },
 
         // draw exploding pacman animation (with 0<=t<=1)
@@ -1030,12 +948,7 @@ var initRenderer = function(){
                     atlas.drawFruitSprite(ctx, fruit.pixel.x, fruit.pixel.y, name);
                 }
                 else if (fruit.isScorePresent()) {
-                    if (gameMode == GAME_PACMAN) {
-                        atlas.drawPacFruitPoints(ctx, fruit.pixel.x, fruit.pixel.y, fruit.getPoints());
-                    }
-                    else {
-                        atlas.drawMsPacFruitPoints(ctx, fruit.pixel.x, fruit.pixel.y, fruit.getPoints());
-                    }
+                    atlas.drawMsPacFruitPoints(ctx, fruit.pixel.x, fruit.pixel.y, fruit.getPoints());
                 }
             }
         },
