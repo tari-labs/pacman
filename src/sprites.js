@@ -735,15 +735,6 @@ var drawMsPacPoints = (function(){
     };
 })();
 
-var drawMonsterSprite = (function(){ return function() {};})();
-
-var drawColoredOttoSprite = function(){ return function() {};};
-
-var drawOttoSprite = drawColoredOttoSprite("#FF0","#00F");
-var drawMsOttoSprite = drawColoredOttoSprite("#F00","#FFF");
-
-var drawDeadOttoSprite = function(){};
-
 // draw pacman body
 var drawPacmanSprite = function(ctx,x,y,dirEnum,angle,mouthShift,scale,centerShift,alpha,color,rot_angle) {
 
@@ -922,8 +913,6 @@ var drawMsPacmanSprite = function(ctx,x,y,dirEnum,frame,rot_angle) {
 
     ctx.restore();
 };
-
-var drawCookiemanSprite = (function(){ return function() {};})();
 
 ////////////////////////////////////////////////////////////////////
 // FRUIT SPRITES

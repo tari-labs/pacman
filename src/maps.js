@@ -198,39 +198,6 @@ var getActRange = function(act) {
     }
 };
 
-var getCookieActColor = function(act) {
-    var colors = [
-        "#359c9c", "#80d8fc", // turqoise
-        "#c2b853", "#e6f1e7", // yellow
-        "#86669c", "#f2c1db", // purple
-        "#ed0a04", "#e8b4cd", // red
-        "#2067c1", "#63e0b6", // blue
-        "#c55994", "#fd61c3", // pink
-        "#12bc76", "#b4e671", // green
-        "#5036d9", "#618dd4", // violet
-        "#939473", "#fdfdf4", // grey
-    ];
-    var i = ((act-1)*2) % colors.length;
-    return {
-        wallFillColor: colors[i],
-        wallStrokeColor: colors[i+1],
-        pelletColor: "#ffb8ae",
-    };
-};
-
-var setNextCookieMap = function() {
-    // cycle the colors
-    var i;
-    var act = getLevelAct(level);
-    if (!map || level == 1 || act != getLevelAct(level-1)) {
-        map = mapgen();
-        var colors = getCookieActColor(act);
-        map.wallFillColor = colors.wallFillColor;
-        map.wallStrokeColor = colors.wallStrokeColor;
-        map.pelletColor = colors.pelletColor;
-    }
-};
-
 // Ms. Pac-Man map 1
 
 var getMsPacActColor = function(act) {

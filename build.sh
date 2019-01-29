@@ -41,7 +41,6 @@ for file in \
     direction.js \
     Map.js \
     colors.js \
-    mapgen.js \
     atlas.js \
     renderers.js  \
     hud.js \
