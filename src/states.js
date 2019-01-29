@@ -797,7 +797,7 @@ var scoreState = (function(){
         atlas.drawGhostPoints(ctx,x+8*tileSize,y,1600);
 
         var mspac_fruits = [
-            {name: 'cherry',     points: 100},
+            {name: 'monero',     points: 100},
             {name: 'strawberry', points: 200},
             {name: 'orange',     points: 500},
             {name: 'pretzel',    points: 700},

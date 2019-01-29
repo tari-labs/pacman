@@ -502,6 +502,11 @@ var atlas = (function(){
             "banana": 10,
             "cookie": 11,
             "cookieface": 12,
+            "monero": 0,
+            "bitcoin": 1,
+            "ripple": 2,
+            "grin": 3,
+            "tari": 4,
         }[name];
 
         copyCellTo(row,col,destCtx,x,y);

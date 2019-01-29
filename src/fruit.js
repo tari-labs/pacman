@@ -66,7 +66,7 @@ BaseFruit.prototype = {
 var PacFruit = function() {
     BaseFruit.call(this);
     this.fruits = [
-        {name:'cherry',     points:100},
+        {name:'monero',     points:100},
         {name:'strawberry', points:300},
         {name:'orange',     points:500},
         {name:'apple',      points:700},
@@ -170,7 +170,7 @@ var PATH_EXIT = 2;
 var MsPacFruit = function() {
     BaseFruit.call(this);
     this.fruits = [
-        {name: 'cherry',     points: 100},
+        {name: 'monero',     points: 100},
         {name: 'strawberry', points: 200},
         {name: 'orange',     points: 500},
         {name: 'pretzel',    points: 700},
