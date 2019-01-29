@@ -61,106 +61,6 @@ BaseFruit.prototype = {
     },
 };
 
-// PAC-MAN FRUIT
-
-var PacFruit = function() {
-    BaseFruit.call(this);
-    this.fruits = [
-        {name:'monero',     points:100},
-        {name:'strawberry', points:300},
-        {name:'orange',     points:500},
-        {name:'apple',      points:700},
-        {name:'melon',      points:1000},
-        {name:'galaxian',   points:2000},
-        {name:'bell',       points:3000},
-        {name:'key',        points:5000},
-    ];
-
-    this.order = [
-        0,  // level 1
-        1,  // level 2 
-        2,  // level 3
-        2,  // level 4
-        3,  // level 5
-        3,  // level 6
-        4,  // level 7
-        4,  // level 8
-        5,  // level 9
-        5,  // level 10
-        6,  // level 11
-        6,  // level 12
-        7]; // level 13+
-
-    this.dotLimit1 = 70;
-    this.dotLimit2 = 170;
-
-    this.duration = 9; // number of seconds that the fruit is on the screen
-    this.framesLeft; // frames left until fruit is off the screen
-
-    this.savedFramesLeft = {};
-};
-
-PacFruit.prototype = newChildObject(BaseFruit.prototype, {
-
-    onNewLevel: function() {
-        this.setCurrentFruit(this.getFruitIndexFromLevel(level));
-        BaseFruit.prototype.onNewLevel.call(this);
-    },
-
-    getFruitFromLevel: function(i) {
-        return this.fruits[this.getFruitIndexFromLevel(i)];
-    },
-
-    getFruitIndexFromLevel: function(i) {
-        if (i > 13) {
-            i = 13;
-        }
-        return this.order[i-1];
-    },
-
-    buildFruitHistory: function() {
-        this.fruitHistory = {};
-        var i;
-        for (i=1; i<= level; i++) {
-            this.fruitHistory[i] = this.fruits[this.getFruitIndexFromLevel(i)];
-        }
-    },
-
-    initiate: function() {
-        var x = 13;
-        var y = 20;
-        this.pixel.x = tileSize*(1+x)-1;
-        this.pixel.y = tileSize*y + midTile.y;
-        this.framesLeft = 60*this.duration;
-    },
-
-    isPresent: function() {
-        return this.framesLeft > 0;
-    },
-
-    reset: function() {
-        BaseFruit.prototype.reset.call(this);
-
-        this.framesLeft = 0;
-    },
-
-    update: function() {
-        BaseFruit.prototype.update.call(this);
-
-        if (this.framesLeft > 0)
-            this.framesLeft--;
-    },
-
-    save: function(t) {
-        BaseFruit.prototype.save.call(this,t);
-        this.savedFramesLeft[t] = this.framesLeft;
-    },
-    load: function(t) {
-        BaseFruit.prototype.load.call(this,t);
-        this.framesLeft = this.savedFramesLeft[t];
-    },
-});
-
 // MS. PAC-MAN FRUIT
 
 var PATH_ENTER = 0;
@@ -336,15 +236,8 @@ MsPacFruit.prototype = newChildObject(BaseFruit.prototype, {
 
 var fruit;
 var setFruitFromGameMode = (function() {
-    var pacfruit = new PacFruit();
     var mspacfruit = new MsPacFruit();
-    fruit = pacfruit;
     return function() {
-        if (gameMode == GAME_PACMAN) {
-            fruit = pacfruit;
-        }
-        else {
-            fruit = mspacfruit;
-        }
+        fruit = mspacfruit;
     };
 })();

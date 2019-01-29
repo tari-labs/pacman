@@ -73,14 +73,10 @@ var atlas = (function(){
         drawAtCell(function(x,y) { drawOrange(ctx,x,y); },      row,2);
         drawAtCell(function(x,y) { drawApple(ctx,x,y); },       row,3);
         drawAtCell(function(x,y) { drawMelon(ctx,x,y); },       row,4);
-        drawAtCell(function(x,y) { drawGalaxian(ctx,x,y); },    row,5);
-        drawAtCell(function(x,y) { drawBell(ctx,x,y); },        row,6);
         drawAtCell(function(x,y) { drawKey(ctx,x,y); },         row,7);
         drawAtCell(function(x,y) { drawPretzel(ctx,x,y); },     row,8);
         drawAtCell(function(x,y) { drawPear(ctx,x,y); },        row,9);
         drawAtCell(function(x,y) { drawBanana(ctx,x,y); },      row,10);
-        drawAtCell(function(x,y) { drawCookie(ctx,x,y); },      row,11);
-        drawAtCell(function(x,y) { drawCookieFlash(ctx,x,y); },      row,12);
 
         var drawGhostCells = function(row,color) {
             var i,f;
@@ -154,9 +150,6 @@ var atlas = (function(){
         })();
 
         var drawCookieCells = function(row,col,dir) {
-            drawAtCell(function(x,y) { drawCookiemanSprite(ctx, x,y, dir, 0, true); }, row, col);
-            drawAtCell(function(x,y) { drawCookiemanSprite(ctx, x,y, dir, 1, true); }, row, col+1);
-            drawAtCell(function(x,y) { drawCookiemanSprite(ctx, x,y, dir, 2, true); }, row, col+2);
         };
         row++;
         (function(){
@@ -168,16 +161,7 @@ var atlas = (function(){
             }
         })();
 
-        var drawMonsterCells = function(row,color) {
-            var i,f;
-            var col=0;
-            for (i=0; i<4; i++) { // dirEnum
-                for (f=0; f<2; f++) { // frame
-                    drawAtCell(function(x,y) { drawMonsterSprite(ctx, x,y, f, i, false, false, false, color); },   row,col);
-                    col++;
-                }
-            }
-        };
+        var drawMonsterCells = function(row,color) {};
 
         row++;
         drawMonsterCells(row, "#FF0000");
@@ -189,33 +173,8 @@ var atlas = (function(){
         drawMonsterCells(row, "#FFB851");
 
         row++;
-        (function(){
-            var i;
-            var col = 0;
-            for (i=0; i<4; i++) { // dirEnum
-                drawAtCell(function(x,y) { drawMonsterSprite(ctx, x,y, 0, i, false, false, true, "#fff"); },     row,col);
-                col++;
-            }
-        })();
-        drawAtCell(function(x,y) { drawMonsterSprite(ctx, x,y, 0, DIR_UP, true, false, false, "#fff"); }, row,4);
-        drawAtCell(function(x,y) { drawMonsterSprite(ctx, x,y, 1, DIR_UP, true, false, false, "#fff"); }, row,5);
-        drawAtCell(function(x,y) { drawMonsterSprite(ctx, x,y, 0, DIR_UP, true, true, false, "#fff"); },  row,6);
-        drawAtCell(function(x,y) { drawMonsterSprite(ctx, x,y, 1, DIR_UP, true, true, false, "#fff"); },  row,7);
-
-        var drawOttoCells = function(row,col,dir) {
-            var i;
-            for (i=0; i<4; i++) { // frame
-                drawAtCell(function(x,y) { drawOttoSprite(ctx, x,y, dir, i); }, row, col);
-                col++;
-            }
-        };
         row++;
-        drawOttoCells(row,0, DIR_UP);
-        drawOttoCells(row,4, DIR_RIGHT);
         row++;
-        drawOttoCells(row,0, DIR_DOWN);
-        drawOttoCells(row,4, DIR_LEFT);
-
         row++;
         drawAtCell(function(x,y) { drawPacPoints(ctx, x,y, 200, "#33ffff"); }, row, 0);
         drawAtCell(function(x,y) { drawPacPoints(ctx, x,y, 400, "#33ffff"); }, row, 1);
@@ -246,21 +205,8 @@ var atlas = (function(){
         drawAtCell(function(x,y) {
             drawSnail(ctx,x,y, "#FFF");
         }, row, 1);
-
-        var drawMsOttoCells = function(row,col,dir) {
-            var i;
-            for (i=0; i<4; i++) { // frame
-                drawAtCell(function(x,y) { drawMsOttoSprite(ctx, x,y, dir, i); }, row, col);
-                col++;
-            }
-        };
         row++;
-        drawMsOttoCells(row,0, DIR_UP);
-        drawMsOttoCells(row,4, DIR_RIGHT);
         row++;
-        drawMsOttoCells(row,0, DIR_DOWN);
-        drawMsOttoCells(row,4, DIR_LEFT);
-
         row++;
         drawAtCell(function(x,y) { drawMonero(ctx,x,y); },      row,0);
         drawAtCell(function(x,y) { drawBitcoin(ctx,x,y); },      row,1);

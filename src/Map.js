@@ -379,6 +379,5 @@ Map.prototype.onDotEat = function(x,y) {
     this.dotsEaten++;
     var i = this.posToIndex(x,y);
     this.currentTiles[i] = ' ';
-    this.timeEaten[i] = vcr.getTime();
     renderer.erasePellet(x,y);
 };

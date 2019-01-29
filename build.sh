@@ -41,11 +41,9 @@ for file in \
     direction.js \
     Map.js \
     colors.js \
-    mapgen.js \
     atlas.js \
     renderers.js  \
     hud.js \
-    galagaStars.js \
     Button.js \
     Menu.js \
     inGameMenu.js \
@@ -65,7 +63,6 @@ for file in \
     input.js \
     cutscenes.js \
     maps.js \
-    vcr.js \
     boss.js \
     main.js
 do

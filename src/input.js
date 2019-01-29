@@ -148,16 +148,6 @@
     addKeyUp  (KEY_1, function() { executive.setUpdatesPerSecond(60); }, isPracticeMode);
     addKeyUp  (KEY_2,  function() { executive.setUpdatesPerSecond(60); }, isPracticeMode);
 
-    // Toggle VCR
-    var canSeek = function() { return !isInMenu() && vcr.getMode() != VCR_NONE; };
-    addKeyDown(KEY_SHIFT, function() { vcr.startSeeking(); },   canSeek);
-    addKeyUp  (KEY_SHIFT, function() { vcr.startRecording(); }, canSeek);
-
-    // Adjust VCR seeking
-    var isSeekState = function() { return vcr.isSeeking(); };
-    addKeyDown(KEY_UP,   function() { vcr.nextSpeed(1); },  isSeekState);
-    addKeyDown(KEY_DOWN, function() { vcr.nextSpeed(-1); }, isSeekState);
-
     // Skip Level
     var canSkip = function() {
         return isPracticeMode() && 

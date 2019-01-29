@@ -144,12 +144,7 @@ var gameTitleState = (function() {
     var x = mapWidth/2 - 3*w;
     var y = 3*tileSize;
     var yellowBtn = new Button(x,y,w,h,function() {
-        if (gameMode == GAME_MSPACMAN) {
-            gameMode = GAME_OTTO;
-        }
-        else if (gameMode == GAME_OTTO) {
-            gameMode = GAME_MSPACMAN;
-        }
+        gameMode = GAME_MSPACMAN;
     });
     yellowBtn.setIcon(function (ctx,x,y,frame) {
         getPlayerDrawFunc()(ctx,x,y,DIR_RIGHT,pacman.getAnimFrame(pacman.getStepFrame(Math.floor((gameMode==GAME_PACMAN?frame+4:frame)/1.5))),true);
@@ -1002,7 +997,6 @@ var readyState =  (function(){
             energizer.reset();
             map.resetTimeEaten();
             frames = 0;
-            vcr.init();
         },
         draw: function() {
             if (!map)
@@ -1031,15 +1025,7 @@ var readyNewState = newChildObject(readyState, {
 
         // increment level and ready the next map
         level++;
-        if (gameMode == GAME_PACMAN) {
-            map = mapPacman;
-        }
-        else if (gameMode == GAME_MSPACMAN || gameMode == GAME_OTTO) {
-            setNextMsPacMap();
-        }
-        else if (gameMode == GAME_COOKIE) {
-            setNextCookieMap();
-        }
+        setNextMsPacMap();
         map.resetCurrent();
         fruit.onNewLevel();
         renderer.drawMap();
@@ -1076,9 +1062,6 @@ var readyRestartState = newChildObject(readyState, {
 
 var playState = {
     init: function() { 
-        if (practiceMode) {
-            vcr.reset();
-        }
     },
     draw: function() {
         renderer.setLevelFlash(false);
@@ -1114,14 +1097,8 @@ var playState = {
     },
     update: function() {
         
-        if (vcr.isSeeking()) {
-            vcr.seek();
-        }
-        else {
-            // record current state
-            if (vcr.getMode() == VCR_RECORD) {
-                vcr.record();
-            }
+
+
 
             var i,j; // loop index
             var maxSteps = 2;
@@ -1184,7 +1161,6 @@ var playState = {
                 for (i=0; i<5; i++)
                     actors[i].frames++;
             }
-        }
     },
 };
 
@@ -1239,34 +1215,12 @@ var seekableScriptState = newChildObject(scriptState, {
 
     init: function() {
         scriptState.init.call(this);
-        this.savedFrames = {};
-        this.savedTriggerFrame = {};
-        this.savedDrawFunc = {};
-        this.savedUpdateFunc = {};
     },
 
-    save: function(t) {
-        this.savedFrames[t] = this.frames;
-        this.savedTriggerFrame[t] = this.triggerFrame;
-        this.savedDrawFunc[t] = this.drawFunc;
-        this.savedUpdateFunc[t] = this.updateFunc;
-    },
-    load: function(t) {
-        this.frames = this.savedFrames[t];
-        this.triggerFrame = this.savedTriggerFrame[t];
-        this.drawFunc = this.savedDrawFunc[t];
-        this.updateFunc = this.savedUpdateFunc[t];
-    },
+    save: function(t) {},
+    load: function(t) {},
     update: function() {
-        if (vcr.isSeeking()) {
-            vcr.seek();
-        }
-        else {
-            if (vcr.getMode() == VCR_RECORD) {
-                vcr.record();
-            }
             scriptState.update.call(this);
-        }
     },
     draw: function() {
         if (this.drawFunc) {
