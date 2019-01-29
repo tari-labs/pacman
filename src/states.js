@@ -259,10 +259,6 @@ var preNewGameState = (function() {
             exitTo(selectActState);
         });
     menu.addSpacer(0.5);
-    menu.addTextButton("CUTSCENES",
-        function() { 
-            exitTo(cutSceneMenuState);
-        });
     menu.addTextButton("ABOUT",
         function() { 
             exitTo(aboutGameState);
@@ -548,68 +544,6 @@ var aboutGameState = (function() {
             desc = getGameDescription();
             numDescLines = desc.length;
             renderer.renderFunc(drawDesc);
-        },
-        update: function() {
-            gameTitleState.update();
-        },
-        getMenu: function() {
-            return menu;
-        },
-    };
-})();
-
-//////////////////////////////////////////////////////////////////////////////////////
-// Cut Scene Menu State
-// (the screen that shows a list of the available cutscenes for the current game)
-
-var cutSceneMenuState = (function() {
-
-    var exitTo = function(s,fade) {
-        gameTitleState.shutdown();
-        menu.disable();
-        switchState(s,fade);
-    };
-
-    var exitToCutscene = function(s) {
-        if (s) {
-            gameTitleState.shutdown();
-            menu.disable();
-            playCutScene(s,cutSceneMenuState);
-        }
-    };
-
-    var menu = new Menu("",2*tileSize,0,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
-
-    menu.addSpacer(2);
-    menu.addTextButton("CUTSCENE 1",
-        function() { 
-            exitToCutscene(cutscenes[gameMode][0]);
-        });
-    menu.addTextButton("CUTSCENE 2",
-        function() { 
-            exitToCutscene(cutscenes[gameMode][1]);
-        });
-    menu.addTextButton("CUTSCENE 3",
-        function() { 
-            exitToCutscene(cutscenes[gameMode][2]);
-        });
-    menu.addSpacer();
-    menu.addTextButton("BACK",
-        function() {
-            exitTo(preNewGameState);
-        });
-    menu.backButton = menu.buttons[menu.buttonCount-1];
-
-    return {
-        init: function() {
-            menu.enable();
-            gameTitleState.init();
-            level = 0;
-        },
-        draw: function() {
-            renderer.clearMapFrame();
-            renderer.renderFunc(menu.draw,menu);
-            gameTitleState.draw();
         },
         update: function() {
             gameTitleState.update();
