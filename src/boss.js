@@ -1,15 +1,21 @@
 // load boss screen. ctx is a canvas context:
 // https://developer.mozilla.org/en-US/docs/Web/API/CanvasRenderingContext2D
 
+var BossScreen = {
+    draw: function(ctx) {
+        loadBoss(ctx, level);
+    }
+};
+
 var screens = [dosScreen];
 
-const loadBoss = function(ctx, index) {
-    const screenFunc = screens[index % screens.length];
-    screenFunc(ctx);
+var loadBoss = function(ctx, index, x, y) {
+    var screenFunc = screens[index % screens.length];
+    screenFunc(ctx, x, y);
 };
 
 function dosScreen(ctx) {
-    const lines = [
+    var lines = [
         "TARI LABS Disk Operating System 4.20",
         "(C) Copyright  1992-2019 TariLabs",
         "","C:\\> dir",
@@ -28,12 +34,14 @@ function dosScreen(ctx) {
         "                         2 dir(s) 5,209,322 bytes free"
 
     ];
-    const size = 25;
+    var size = Math.floor(20.0 / renderScale);
     ctx.save();
+    // ctx.translate(x,y);
+    ctx.textAlign = "left";
     ctx.font = size + "px dos437,courier";
     ctx.strokeStyle = "#fff";
     ctx.fillStyle = "#fff";
-    for (let i=0; i< lines.length; i++) {
+    for (var i=0; i< lines.length; i++) {
         ctx.fillText(lines[i], 5, (size+3) * (i + 1));
     }
     ctx.restore();
