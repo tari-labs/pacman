@@ -11,17 +11,14 @@ var hud = (function(){
                 on = valid;
                 if (on) {
                     inGameMenu.onHudEnable();
-                    vcr.onHudEnable();
                 }
                 else {
                     inGameMenu.onHudDisable();
-                    vcr.onHudDisable();
                 }
             }
         },
         draw: function(ctx) {
             inGameMenu.draw(ctx);
-            vcr.draw(ctx);
         },
         isValidState: function() {
             return (

@@ -933,17 +933,6 @@ var initRenderer = function(){
 
                 func(ctx,x,y,frame,faceDirEnum,scared,isFlash,eyes,color);
             };
-            vcr.drawHistory(ctx, function(t) {
-                draw(
-                    g.savedMode[t],
-                    g.savedPixel[t],
-                    g.savedFrames[t],
-                    g.savedFaceDirEnum[t],
-                    g.savedScared[t],
-                    energizer.isFlash(),
-                    g.color,
-                    g.savedDirEnum[t]);
-            });
             draw(g.mode, g.pixel, g.frames, g.faceDirEnum, g.scared, energizer.isFlash(), g.color, g.dirEnum);
             if (alpha) {
                 ctx.globalAlpha = backupAlpha;
@@ -963,12 +952,6 @@ var initRenderer = function(){
                 func(ctx, pixel.x, pixel.y, dirEnum, frame, true);
             };
 
-            vcr.drawHistory(ctx, function(t) {
-                draw(
-                    pacman.savedPixel[t],
-                    pacman.savedDirEnum[t],
-                    pacman.savedSteps[t]);
-            });
             draw(pacman.pixel, pacman.dirEnum, pacman.steps);
             if (pacman.invincible) {
                 ctx.globalAlpha = 1;
@@ -1042,16 +1025,6 @@ var initRenderer = function(){
 
             if (fruit.getCurrentFruit()) {
                 var name = fruit.getCurrentFruit().name;
-
-                // draw history trails of the fruit if applicable
-                if (fruit.savedPixel) {
-                    vcr.drawHistory(ctx, function(t) {
-                        var pixel = fruit.savedPixel[t];
-                        if (pixel) {
-                            atlas.drawFruitSprite(ctx, pixel.x, pixel.y, name);
-                        }
-                    });
-                }
 
                 if (fruit.isPresent()) {
                     atlas.drawFruitSprite(ctx, fruit.pixel.x, fruit.pixel.y, name);

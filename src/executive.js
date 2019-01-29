@@ -115,7 +115,6 @@ var executive = (function(){
         setUpdatesPerSecond: function(ups) {
             framePeriod = 1000/ups;
             //gameTime = undefined;
-            vcr.onFramePeriodChange();
         },
         init: function() {
             var that = this;

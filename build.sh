@@ -65,7 +65,6 @@ for file in \
     input.js \
     cutscenes.js \
     maps.js \
-    vcr.js \
     boss.js \
     main.js
 do

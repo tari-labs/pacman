@@ -171,32 +171,6 @@ var clearCheats, backupCheats, restoreCheats;
 var level = 1;
 var extraLives = 0;
 
-// VCR functions
-
-var savedLevel = {};
-var savedExtraLives = {};
-var savedHighScore = {};
-var savedScore = {};
-var savedState = {};
-
-var saveGame = function(t) {
-    savedLevel[t] = level;
-    savedExtraLives[t] = extraLives;
-    savedHighScore[t] = getHighScore();
-    savedScore[t] = getScore();
-    savedState[t] = state;
-};
-var loadGame = function(t) {
-    level = savedLevel[t];
-    if (extraLives != savedExtraLives[t]) {
-        extraLives = savedExtraLives[t];
-        renderer.drawMap();
-    }
-    setHighScore(savedHighScore[t]);
-    setScore(savedScore[t]);
-    state = savedState[t];
-};
-
 /// SCORING
 // (manages scores and high scores for each game type)
 

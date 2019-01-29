@@ -1002,7 +1002,6 @@ var readyState =  (function(){
             energizer.reset();
             map.resetTimeEaten();
             frames = 0;
-            vcr.init();
         },
         draw: function() {
             if (!map)
@@ -1076,9 +1075,6 @@ var readyRestartState = newChildObject(readyState, {
 
 var playState = {
     init: function() { 
-        if (practiceMode) {
-            vcr.reset();
-        }
     },
     draw: function() {
         renderer.setLevelFlash(false);
@@ -1114,14 +1110,8 @@ var playState = {
     },
     update: function() {
         
-        if (vcr.isSeeking()) {
-            vcr.seek();
-        }
-        else {
-            // record current state
-            if (vcr.getMode() == VCR_RECORD) {
-                vcr.record();
-            }
+
+
 
             var i,j; // loop index
             var maxSteps = 2;
@@ -1184,7 +1174,6 @@ var playState = {
                 for (i=0; i<5; i++)
                     actors[i].frames++;
             }
-        }
     },
 };
 
@@ -1239,34 +1228,12 @@ var seekableScriptState = newChildObject(scriptState, {
 
     init: function() {
         scriptState.init.call(this);
-        this.savedFrames = {};
-        this.savedTriggerFrame = {};
-        this.savedDrawFunc = {};
-        this.savedUpdateFunc = {};
     },
 
-    save: function(t) {
-        this.savedFrames[t] = this.frames;
-        this.savedTriggerFrame[t] = this.triggerFrame;
-        this.savedDrawFunc[t] = this.drawFunc;
-        this.savedUpdateFunc[t] = this.updateFunc;
-    },
-    load: function(t) {
-        this.frames = this.savedFrames[t];
-        this.triggerFrame = this.savedTriggerFrame[t];
-        this.drawFunc = this.savedDrawFunc[t];
-        this.updateFunc = this.savedUpdateFunc[t];
-    },
+    save: function(t) {},
+    load: function(t) {},
     update: function() {
-        if (vcr.isSeeking()) {
-            vcr.seek();
-        }
-        else {
-            if (vcr.getMode() == VCR_RECORD) {
-                vcr.record();
-            }
             scriptState.update.call(this);
-        }
     },
     draw: function() {
         if (this.drawFunc) {

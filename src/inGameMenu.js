@@ -17,7 +17,6 @@ var inGameMenu = (function() {
     // button to enable in-game menu
     var btn = new Button(mapWidth/2 - w/2,mapHeight,w,h, function() {
         showMainMenu();
-        vcr.onHudDisable();
     });
     btn.setText("MENU");
     btn.setFont(tileSize+"px ArcadeR","#FFF");
@@ -73,7 +72,6 @@ var inGameMenu = (function() {
     var practiceMenu = new Menu("PAUSED",2*tileSize,5*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
     practiceMenu.addTextButton("RESUME", function() {
         hideMainMenu();
-        vcr.onHudEnable();
     });
     practiceMenu.addTextButton("RESTART LEVEL", function() {
         showConfirm("RESTART LEVEL?", function() {
@@ -94,7 +92,6 @@ var inGameMenu = (function() {
         showConfirm("QUIT GAME?", function() {
             switchState(preNewGameState, 60);
             clearCheats();
-            vcr.reset();
         });
     });
     practiceMenu.backButton = practiceMenu.buttons[0];
