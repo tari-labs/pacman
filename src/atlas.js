@@ -73,14 +73,10 @@ var atlas = (function(){
         drawAtCell(function(x,y) { drawOrange(ctx,x,y); },      row,2);
         drawAtCell(function(x,y) { drawApple(ctx,x,y); },       row,3);
         drawAtCell(function(x,y) { drawMelon(ctx,x,y); },       row,4);
-        drawAtCell(function(x,y) { drawGalaxian(ctx,x,y); },    row,5);
-        drawAtCell(function(x,y) { drawBell(ctx,x,y); },        row,6);
         drawAtCell(function(x,y) { drawKey(ctx,x,y); },         row,7);
         drawAtCell(function(x,y) { drawPretzel(ctx,x,y); },     row,8);
         drawAtCell(function(x,y) { drawPear(ctx,x,y); },        row,9);
         drawAtCell(function(x,y) { drawBanana(ctx,x,y); },      row,10);
-        drawAtCell(function(x,y) { drawCookie(ctx,x,y); },      row,11);
-        drawAtCell(function(x,y) { drawCookieFlash(ctx,x,y); },      row,12);
 
         var drawGhostCells = function(row,color) {
             var i,f;

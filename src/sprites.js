@@ -1227,102 +1227,6 @@ var drawMelon = function(ctx,x,y) {
     ctx.restore();
 };
 
-var drawGalaxian = function(ctx,x,y) {
-    ctx.save();
-    ctx.translate(x,y);
-
-    // draw yellow body
-    ctx.beginPath();
-    ctx.moveTo(-4,-2);
-    ctx.lineTo(4,-2);
-    ctx.lineTo(4,-1);
-    ctx.lineTo(2,1);
-    ctx.lineTo(1,0);
-    ctx.lineTo(0,0);
-    ctx.lineTo(0,5);
-    ctx.lineTo(0,0);
-    ctx.lineTo(-1,0);
-    ctx.lineTo(-2,1);
-    ctx.lineTo(-4,-1);
-    ctx.closePath();
-    ctx.lineJoin = 'round';
-    ctx.strokeStyle = ctx.fillStyle = '#fffa36';
-    ctx.fill();
-    ctx.stroke();
-
-    // draw red arrow head
-    ctx.beginPath();
-    ctx.moveTo(0,-5);
-    ctx.lineTo(-3,-2);
-    ctx.lineTo(-2,-2);
-    ctx.lineTo(-1,-3);
-    ctx.lineTo(0,-3);
-    ctx.lineTo(0,-1);
-    ctx.lineTo(0,-3);
-    ctx.lineTo(1,-3);
-    ctx.lineTo(2,-2);
-    ctx.lineTo(3,-2);
-    ctx.closePath();
-    ctx.lineJoin = 'round';
-    ctx.strokeStyle = ctx.fillStyle = "#f00";
-    ctx.fill();
-    ctx.stroke();
-
-    // draw blue wings
-    ctx.beginPath();
-    ctx.moveTo(-5,-4);
-    ctx.lineTo(-5,-1);
-    ctx.lineTo(-2,2);
-    ctx.moveTo(5,-4);
-    ctx.lineTo(5,-1);
-    ctx.lineTo(2,2);
-    ctx.strokeStyle = "#00f";
-    ctx.lineJoin = 'round';
-    ctx.stroke();
-
-    ctx.restore();
-};
-
-var drawBell = function(ctx,x,y) {
-    ctx.save();
-    ctx.translate(x,y);
-
-    // bell body
-    ctx.beginPath();
-    ctx.moveTo(-1,-5);
-    ctx.bezierCurveTo(-4,-5,-6,1,-6,6);
-    ctx.lineTo(5,6);
-    ctx.bezierCurveTo(5,1,3,-5,0,-5);
-    ctx.closePath();
-    ctx.fillStyle = ctx.strokeStyle = "#fffa37";
-    ctx.stroke();
-    ctx.fill();
-
-    // marks
-    ctx.beginPath();
-    ctx.moveTo(-4,4);
-    ctx.lineTo(-4,3);
-    ctx.moveTo(-3,1);
-    ctx.quadraticCurveTo(-3,-2,-2,-2);
-    ctx.moveTo(-1,-4);
-    ctx.lineTo(0,-4);
-    ctx.lineCap = 'round';
-    ctx.strokeStyle = '#000';
-    ctx.stroke();
-
-    // bell bottom
-    ctx.beginPath();
-    ctx.rect(-5.5,6,10,2);
-    ctx.fillStyle = "#68b9fc";
-    ctx.fill();
-    ctx.beginPath();
-    ctx.rect(-0.5,6,2,2);
-    ctx.fillStyle = '#fff';
-    ctx.fill();
-
-    ctx.restore();
-};
-
 var drawKey = function(ctx,x,y) {
     ctx.save();
     ctx.translate(x,y);
@@ -1491,74 +1395,6 @@ var drawBanana = function(ctx,x,y) {
     ctx.restore();
 };
 
-var drawCookie = function(ctx,x,y) {
-    ctx.save();
-    ctx.translate(x,y);
-
-    // body
-    ctx.beginPath();
-    ctx.arc(0,0,6,0,Math.PI*2);
-    ctx.fillStyle = "#f9bd6d";
-    //ctx.fillStyle = "#dfab68";
-    ctx.fill();
-
-    // chocolate chips
-    var spots = [
-        0,-3,
-        -4,-1,
-        0,2,
-        3,0,
-        3,3,
-         ];
-
-    ctx.fillStyle = "#000";
-    var i,len;
-    for (i=0, len=spots.length; i<len; i+=2) {
-        var x = spots[i];
-        var y = spots[i+1];
-        ctx.beginPath();
-        ctx.arc(x,y,0.75,0,2*Math.PI);
-        ctx.fill();
-    }
-
-    ctx.restore();
-};
-
-var drawCookieFlash = function(ctx,x,y) {
-    ctx.save();
-    ctx.translate(x,y);
-
-    // body
-    ctx.beginPath();
-    ctx.arc(0,0,6,0,Math.PI*2);
-    ctx.fillStyle = "#000";
-    ctx.lineWidth = 1;
-    ctx.strokeStyle = "#f9bd6d";
-    ctx.fill();
-    ctx.stroke();
-
-    // chocolate chips
-    var spots = [
-        0,-3,
-        -4,-1,
-        0,2,
-        3,0,
-        3,3,
-         ];
-
-    ctx.fillStyle = "#f9bd6d";
-    var i,len;
-    for (i=0, len=spots.length; i<len; i+=2) {
-        var x = spots[i];
-        var y = spots[i+1];
-        ctx.beginPath();
-        ctx.arc(x,y,0.75,0,2*Math.PI);
-        ctx.fill();
-    }
-
-    ctx.restore();
-};
-
 var getSpriteFuncFromFruitName = function(name) {
     var funcs = {
         'cherry': drawCherry,
@@ -1568,7 +1404,6 @@ var getSpriteFuncFromFruitName = function(name) {
         'melon': drawMelon,
         'key': drawKey,
         'banana': drawBanana,
-        'cookie': drawCookie,
         'monero': drawMonero,
         'bitcoin': drawBitcoin,
         'ripple': drawRipple,
@@ -1577,66 +1412,6 @@ var getSpriteFuncFromFruitName = function(name) {
     };
 
     return funcs[name];
-};
-
-var drawRecordSymbol = function(ctx,x,y,color) {
-    ctx.save();
-    ctx.fillStyle = color;
-    ctx.translate(x,y);
-
-    ctx.beginPath();
-    ctx.arc(0,0,4,0,Math.PI*2);
-    ctx.fill();
-
-    ctx.restore();
-};
-
-var drawRewindSymbol = function(ctx,x,y,color) {
-    ctx.save();
-    ctx.fillStyle = color;
-    ctx.translate(x,y);
-
-    var s = 3;
-    var drawTriangle = function(x) {
-        ctx.beginPath();
-        ctx.moveTo(x,s);
-        ctx.lineTo(x-2*s,0);
-        ctx.lineTo(x,-s);
-        ctx.closePath();
-        ctx.fill();
-    };
-    drawTriangle(0);
-    drawTriangle(2*s);
-
-    ctx.restore();
-};
-
-var drawUpSymbol = function(ctx,x,y,color) {
-    ctx.save();
-    ctx.translate(x,y);
-    var s = tileSize;
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(0,-s/2);
-    ctx.lineTo(s/2,s/2);
-    ctx.lineTo(-s/2,s/2);
-    ctx.closePath();
-    ctx.fill();
-    ctx.restore();
-};
-
-var drawDownSymbol = function(ctx,x,y,color) {
-    ctx.save();
-    ctx.translate(x,y);
-    var s = tileSize;
-    ctx.fillStyle = color;
-    ctx.beginPath();
-    ctx.moveTo(0,s/2);
-    ctx.lineTo(s/2,-s/2);
-    ctx.lineTo(-s/2,-s/2);
-    ctx.closePath();
-    ctx.fill();
-    ctx.restore();
 };
 
 var drawSnail = (function(){
