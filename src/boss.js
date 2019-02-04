@@ -7,7 +7,7 @@ var BossScreen = {
     }
 };
 
-var screens = [dosScreen3];
+var screens = [dosScreen, dosScreen2, dosScreen3];
 
 var loadBoss = function(ctx, index, x, y) {
     var screenFunc = screens[index % screens.length];
@@ -81,9 +81,11 @@ function dosScreen2(ctx) {
 function dosScreen3(ctx) {
     var char_width = Math.floor(17.0 / renderScale);
     var char_height= Math.floor(char_width/2.0);
+    //Render top and side borders
     ctx.fillStyle = "#00ffff";
     ctx.fillRect(0,0,320,char_width);
-    ctx.fillRect(0,0,char_height*4,160);
+    ctx.fillRect(0,0,char_height*4,116);
+    //Render Border Text
     var black_text_lines = [
         "        A        B        C        D        E        F        G        H",
         "  0",
@@ -114,9 +116,9 @@ function dosScreen3(ctx) {
     ctx.strokeStyle = "#fff";
     ctx.fillStyle = "#000000";
     for (var i=0; i< black_text_lines.length; i++) {
-        ctx.fillText(black_text_lines[i], 0, (char_width+2) * i);
+        ctx.fillText(black_text_lines[i], 0, (char_height+2) * i);
     }
-
+    //Render primary white text
     ctx.fillStyle = "#FFFFFF";
     var white_text_lines = [
         "",
@@ -139,8 +141,37 @@ function dosScreen3(ctx) {
         "    LAS VEGAS"
     ];
     for (var i=0; i< white_text_lines.length; i++) {
-        ctx.fillText(white_text_lines[i], 0, (char_width+2) * i);
+        ctx.fillText(white_text_lines[i], 0, (char_height+2) * i);
     }
-    
+    //Render Numbers
+    var value_matrix = [259.0,265.0,325.0,329.0,334.0,395.0,
+                        140.0,196.0,256.0,262.0,265.0,269.0,
+                        140.0,196.0,256.0,261.0,265.0,269.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0,
+                        140.0,196.0,256.0,262.0,266.0,270.0
+    ];
+
+    //TODO encode
+    ctx.textAlign = "right";
+    var render_row_offset=10*char_height;
+    var render_column_offset=17*char_width;
+    var row_index=0;
+    var column_index = 0;
+    for (var i=0; i< value_matrix.length; i++) {
+        ctx.fillText(value_matrix[i].toFixed(3),render_column_offset+(char_width+24) * column_index, render_row_offset+(char_height+2) * row_index);
+        column_index=column_index+1;
+        if(column_index>=6) {
+            row_index=row_index+1;
+            column_index = 0;
+        }
+    }
+
     ctx.restore();
 }
