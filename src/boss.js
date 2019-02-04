@@ -7,7 +7,7 @@ var BossScreen = {
     }
 };
 
-var screens = [dosScreen, dosScreen2];
+var screens = [dosScreen3];
 
 var loadBoss = function(ctx, index, x, y) {
     var screenFunc = screens[index % screens.length];
@@ -66,7 +66,7 @@ function dosScreen2(ctx) {
         "   version too clean.\" Familiar with DOS 1.0,",
         "   AGI and SCI."
     ];
-    var size = Math.floor(15.0 / renderScale);
+    var size = Math.floor(20.0 / renderScale);
     ctx.save();
     ctx.textAlign = "left";
     ctx.font = size + "px dos437,courier";
@@ -75,5 +75,72 @@ function dosScreen2(ctx) {
     for (var i=0; i< lines.length; i++) {
         ctx.fillText(lines[i], 5, (size+3) * (i + 1));
     }
+    ctx.restore();
+}
+
+function dosScreen3(ctx) {
+    var char_width = Math.floor(17.0 / renderScale);
+    var char_height= Math.floor(char_width/2.0);
+    ctx.fillStyle = "#00ffff";
+    ctx.fillRect(0,0,320,char_width);
+    ctx.fillRect(0,0,char_height*4,160);
+    var black_text_lines = [
+        "        A        B        C        D        E        F        G        H",
+        "  0",
+        "  1",
+        "  2",
+        "  3",
+        "  4",
+        "  5",
+        "  6",
+        "  7",
+        "  8",
+        "  9",
+        " 10",
+        " 11",
+        " 12",
+        " 13",
+        " 14",
+        " 15",
+        " 16",
+        " 17",
+        " 18",
+        " 19",
+        " 20"
+    ];
+    ctx.save();
+    ctx.textAlign = "left";
+    ctx.font = char_width + "px dos437,courier";
+    ctx.strokeStyle = "#fff";
+    ctx.fillStyle = "#000000";
+    for (var i=0; i< black_text_lines.length; i++) {
+        ctx.fillText(black_text_lines[i], 0, (char_width+2) * i);
+    }
+
+    ctx.fillStyle = "#FFFFFF";
+    var white_text_lines = [
+        "",
+        "",
+        "                             REVENUES FROM DIFFERENT CITIES",
+        "",
+        "                       JANUARY  FEBRUARY  MARCH    APRIL     MAY     JUNE",
+        "",
+        "    SAN FRANCISCO",
+        "    LOS ANGELES",
+        "    BOSTON",
+        "    CHICAGO",
+        "    NEW YORK",
+        "    DENVER",
+        "    HOUSTON",
+        "    SAN DIEGO",
+        "    OAKLAND",
+        "    SAN JOSE",
+        "    RENO",
+        "    LAS VEGAS"
+    ];
+    for (var i=0; i< white_text_lines.length; i++) {
+        ctx.fillText(white_text_lines[i], 0, (char_width+2) * i);
+    }
+    
     ctx.restore();
 }
