@@ -7,7 +7,7 @@ var BossScreen = {
     }
 };
 
-var screens = [dosScreen];
+var screens = [dosScreen, dosScreen2];
 
 var loadBoss = function(ctx, index, x, y) {
     var screenFunc = screens[index % screens.length];
@@ -41,6 +41,37 @@ function dosScreen(ctx) {
     ctx.font = size + "px dos437,courier";
     ctx.strokeStyle = "#fff";
     ctx.fillStyle = "#fff";
+    for (var i=0; i< lines.length; i++) {
+        ctx.fillText(lines[i], 5, (size+3) * (i + 1));
+    }
+    ctx.restore();
+}
+
+function dosScreen2(ctx) {
+    var lines = [
+        "Classified Advertising Dept.",
+        "Ball Street Journal",
+        "10001 Broadway",
+        "New York, NY 10001",
+        "",
+        "Gentlement",
+        "",
+        "Enclosed please find my personal check in the",
+        "amount of $57.30 to cover three insertions of",
+        "the following classified advertisement in your",
+        "\"Seeking Position\" department:",
+        "",
+        "   Mature, experienced software analyst available.",
+        "   Bug installation a proven speciality. \"No",
+        "   version too clean.\" Familiar with DOS 1.0,",
+        "   AGI and SCI."
+    ];
+    var size = Math.floor(15.0 / renderScale);
+    ctx.save();
+    ctx.textAlign = "left";
+    ctx.font = size + "px dos437,courier";
+    ctx.strokeStyle = "#fff";
+    ctx.fillStyle = "#00ff00";
     for (var i=0; i< lines.length; i++) {
         ctx.fillText(lines[i], 5, (size+3) * (i + 1));
     }
