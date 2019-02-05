@@ -100,13 +100,13 @@ function dosScreen3(ctx) {
 }
 
 function dosScreen4(ctx) {
-    var char_width = Math.floor(17.0 / renderScale);
-    var char_height= Math.floor(char_width/2.0);
+    var char_height = 6.0;
+    var char_width= char_height / 2.0;
     //Render top and side borders
-    ctx.translate(-15,60);
+    ctx.translate(-15, 60);
     ctx.fillStyle = "#00ffff";
-    ctx.fillRect(0,0,260,char_width);
-    ctx.fillRect(0,0,char_height*4,116);
+    ctx.fillRect(0 ,0, 260, char_height);
+    ctx.fillRect(0, 0, char_height * 2, 116);
     //Render Border Text
     var black_text_lines = [
         "        A        B        C        D        E        F        G        H",
@@ -134,11 +134,11 @@ function dosScreen4(ctx) {
     ];
     ctx.save();
     ctx.textAlign = "left";
-    ctx.font = char_width + "px dos437,courier";
+    ctx.font = char_height + "px dos437,courier";
     ctx.strokeStyle = "#fff";
     ctx.fillStyle = "#000000";
-    for (var i=0; i< black_text_lines.length; i++) {
-        ctx.fillText(black_text_lines[i], 0, (char_height+2) * i);
+    for (var i=0; i<black_text_lines.length; i++) {
+        ctx.fillText(black_text_lines[i], 0, (char_width + 2) * i);
     }
     //Render primary white text
     ctx.fillStyle = "#FFFFFF";
@@ -162,8 +162,8 @@ function dosScreen4(ctx) {
         "    RENO",
         "    LAS VEGAS"
     ];
-    for (var i=0; i< white_text_lines.length; i++) {
-        ctx.fillText(white_text_lines[i], 0, (char_height+2) * i);
+    for (var i=0; i<white_text_lines.length; i++) {
+        ctx.fillText(white_text_lines[i], 0, (char_width + 2) * i);
     }
     //Render Numbers
     var value_matrix = [259.0,265.0,325.0,329.0,334.0,395.0,
@@ -181,21 +181,21 @@ function dosScreen4(ctx) {
     ];
 
     ctx.textAlign = "right";
-    var render_row_offset=10*char_height;
-    var render_column_offset=17*char_width;
-    var row_index=0;
+    var render_row_offset = 10 * char_width;
+    var render_column_offset = 17 * char_height;
+    var row_index = 0;
     var column_index = 0;
-    for (var i=0; i< value_matrix.length; i++) {
+    for (var i=0; i<value_matrix.length; i++) {
 
         //TODO encode values here, might be better to hardcode results
         // if (i<address.length) {
         //     value_matrix[i]=value_matrix[i]-address[i];
         // }
 
-        ctx.fillText(value_matrix[i].toFixed(3),render_column_offset+(char_width+24) * column_index, render_row_offset+(char_height+2) * row_index);
-        column_index=column_index+1;
-        if(column_index>=6) {
-            row_index=row_index+1;
+        ctx.fillText(value_matrix[i].toFixed(3), render_column_offset + (char_height + 24) * column_index, render_row_offset + (char_width + 2) * row_index);
+        column_index = column_index + 1;
+        if(column_index >= 6) {
+            row_index = row_index + 1;
             column_index = 0;
         }
     }
