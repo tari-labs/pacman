@@ -7,12 +7,6 @@
                 color: white;
             }
 
-            canvas {
-                position: absolute;
-                left: 0;
-                top: 50px;
-            }
-
             @font-face {
                 font-family: 'dos437';
                 src: url('../font/Dos437.ttf');
@@ -21,21 +15,41 @@
             p {
                 font-family: dos437, serif;
             }
+
+            .boss {
+                background-color: darkblue;
+            }
+
+            .boss-odd {
+                background-color: slategrey;
+            }
         </style>
-        <script>
-            var renderScale = 1;
-        </script>
         <script src="../src/boss.js"></script>
     </head>
 <body>
-<p>Boss Screen 1:</p>
-<canvas width="1000px" height="1000px" id="boss"></canvas>
+<div>
+    <div class="boss">
+        <canvas width="800px" height="600px" id="boss1"></canvas>
+    </div>
+    <div class="boss-odd">
+        <canvas width="800px" height="600px" id="boss2"></canvas>
+    </div>
+    <div class="boss">
+        <canvas width="800px" height="600px" id="boss3"></canvas>
+    </div>
+    <div class="boss-odd">
+        <canvas width="800px" height="600px" id="boss4"></canvas>
+    </div>
+</div>
+
 
 <script>
     window.onload = function () {
-        let canvas = document.getElementById('boss');
-        ctx = canvas.getContext("2d");
-        loadBoss(ctx, 0);
+        for (let i = 1; i <= 4; i++) {
+            let canvas = document.getElementById('boss' + i);
+            ctx = canvas.getContext("2d");
+            loadBoss(ctx, i, 150, 50);
+        }
     }
 </script>
 </body>
