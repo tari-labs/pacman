@@ -245,15 +245,8 @@ var preNewGameState = (function() {
             newGameState.setStartLevel(1);
             exitTo(newGameState, 60);
         });
-    menu.addTextButton("PLAY TURBO",
-        function() { 
-            practiceMode = false;
-            turboMode = true;
-            newGameState.setStartLevel(1);
-            exitTo(newGameState, 60);
-        });
     menu.addTextButton("PRACTICE",
-        function() { 
+        function() {
             practiceMode = true;
             turboMode = false;
             exitTo(selectActState);

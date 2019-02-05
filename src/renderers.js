@@ -840,9 +840,18 @@ var initRenderer = function(){
                 bgCtx.translate(-0.5, -0.5);
             }
             else if (tile == 'o') {
-                bgCtx.fillStyle = map.pelletColor;
+                bgCtx.fillStyle = "#FF1493";
                 bgCtx.beginPath();
-                bgCtx.arc(x*tileSize+midTile.x+0.5,y*tileSize+midTile.y,this.energizerSize/2,0,Math.PI*2);
+                bgCtx.arc(x*tileSize+midTile.x-1.25,y*tileSize+midTile.y-0.5,this.energizerSize/4,0,Math.PI*2);
+                bgCtx.arc(x*tileSize+midTile.x+2.25,y*tileSize+midTile.y-0.5,this.energizerSize/4,0,Math.PI*2);
+                bgCtx.closePath();
+                bgCtx.fill();
+
+                bgCtx.beginPath();
+                bgCtx.moveTo(x*tileSize+midTile.x-3.4, y*tileSize+midTile.y);
+                bgCtx.lineTo(x*tileSize+midTile.x+0.5, y*tileSize+midTile.y+3.5);
+                bgCtx.lineTo(x*tileSize+midTile.x+4.4, y*tileSize+midTile.y);
+
                 bgCtx.fill();
             }
             if (!isTranslated) {
