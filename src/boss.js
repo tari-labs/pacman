@@ -37,7 +37,6 @@ function dosScreen(ctx) {
     //var size = Math.floor(20.0 / renderScale);
     var size = 8.0;
     ctx.save();
-    // ctx.translate(0, 0);
     ctx.textAlign = "left";
     ctx.font = size + "px dos437,courier";
     ctx.strokeStyle = "#fff";
@@ -67,7 +66,6 @@ function dosScreen2(ctx) {
     ];
     var char_height = 7.0;
     ctx.save();
-    // ctx.translate(-10, 20);
     ctx.textAlign = "left";
     ctx.font = char_height + "px dos437,courier";
     ctx.strokeStyle = "#fff";
