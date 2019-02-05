@@ -7,8 +7,7 @@ var BossScreen = {
     }
 };
 
-var screens = [dosScreen, dosScreen2, dosScreen3, dosScreen4];
-
+var screens = [dosScreen, dosScreen2, dosScreen3, dosScreen4, dosScreen5];
 
 var loadBoss = function(ctx, index, x, y) {
     var screenFunc = screens[(index-1) % screens.length];
@@ -200,6 +199,56 @@ function dosScreen4(ctx) {
             column_index = 0;
         }
     }
+
+    ctx.restore();
+}
+
+function dosScreen5(ctx) {
+    var block_size = 26;
+    var n_horizontal_lines = 9;
+    var n_vertical_lines = 5;
+    var char_height = 10.0;
+    var char_width = char_height / 2.0;
+    var line_thickness = 1.0;
+    var horizontal_line_length = block_size * (n_horizontal_lines - 1) + line_thickness;
+    var vertical_line_length = block_size * (n_vertical_lines - 1) + line_thickness;
+
+    ctx.save();
+    ctx.translate(12, 80);
+    ctx.fillStyle = "#4cbb17";
+    ctx.textAlign = "right";
+    ctx.font = char_height + "px dos437,courier";
+    ctx.strokeStyle = "#fff";
+    for(var y=0;y<n_vertical_lines;y++) {
+        ctx.fillRect(0, y * block_size, horizontal_line_length, line_thickness);
+        if(y >= 1) {
+            ctx.fillText(y * 5, -1, vertical_line_length - char_width - (y * block_size));
+        }
+    }
+    ctx.fillText(0, -1, vertical_line_length);
+    ctx.textAlign = "center";
+    for (var x=0; x<n_horizontal_lines; x++) {
+        ctx.fillRect( x*block_size, 0, line_thickness, vertical_line_length);
+        if (x >= 1) {
+            ctx.fillText(x * 5, x * block_size, vertical_line_length + 1);
+        }
+    }
+    //Draw red line
+    ctx.strokeStyle = "#ff0000";
+    ctx.lineWidth = 2;
+    ctx.beginPath();
+    ctx.moveTo(line_thickness, 2.7 * block_size);
+    ctx.lineTo(0.8 * block_size, 2.7 * block_size);
+    ctx.lineTo(1.5 * block_size, 2.95 * block_size);
+    ctx.lineTo(2.5 * block_size, 1.5 * block_size);
+    ctx.lineTo(3.4 * block_size, 2.4 * block_size);
+    ctx.lineTo(4.0 * block_size, 1.5 * block_size);
+    ctx.lineTo(4.5 * block_size, 1.8 * block_size);
+    ctx.lineTo(5.0 * block_size, 1.2 * block_size);
+    ctx.lineTo(5.8 * block_size, 1.2 * block_size);
+    ctx.lineTo(8.0 * block_size, line_thickness);
+    ctx.stroke();
+    ctx.closePath();
 
     ctx.restore();
 }
