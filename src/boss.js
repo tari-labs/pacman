@@ -34,9 +34,10 @@ function dosScreen(ctx) {
         "                         2 dir(s) 5,209,322 bytes free"
 
     ];
-    var size = Math.floor(20.0 / renderScale);
+    //var size = Math.floor(20.0 / renderScale);
+    var size = 8.0;
     ctx.save();
-    // ctx.translate(x,y);
+    ctx.translate(-15, 0);
     ctx.textAlign = "left";
     ctx.font = size + "px dos437,courier";
     ctx.strokeStyle = "#fff";
@@ -64,14 +65,15 @@ function dosScreen2(ctx) {
         "   installation a proven speciality. \"No version too",
         "   clean.\" Familiar with DOS 1.0, AGI and SCI."
     ];
-    var size = Math.floor(20.0 / renderScale);
+    var char_height = 7.0;
     ctx.save();
+    ctx.translate(-10, 20);
     ctx.textAlign = "left";
-    ctx.font = size + "px dos437,courier";
+    ctx.font = char_height + "px dos437,courier";
     ctx.strokeStyle = "#fff";
     ctx.fillStyle = "#00ff00";
-    for (var i=0; i< lines.length; i++) {
-        ctx.fillText(lines[i], 5, (size+3) * (i + 1));
+    for (var i=0; i<lines.length; i++) {
+        ctx.fillText(lines[i], 5, (char_height + 3) * (i + 1));
     }
     ctx.restore();
 }
@@ -87,14 +89,14 @@ function dosScreen3(ctx) {
         "",
         "C\\>_",
     ];
-    var size = Math.floor(20.0 / renderScale);
+    var char_height = 8.0;
     ctx.save();
     ctx.textAlign = "left";
-    ctx.font = size + "px dos437,courier";
+    ctx.font = char_height + "px dos437,courier";
     ctx.strokeStyle = "#fff";
     ctx.fillStyle = "#fff";
     for (var i=0; i< lines.length; i++) {
-        ctx.fillText(lines[i], 5, (size+3) * (i + 1));
+        ctx.fillText(lines[i], 5, (char_height + 3) * (i + 1));
     }
     ctx.restore();
 }
@@ -103,7 +105,8 @@ function dosScreen4(ctx) {
     var char_height = 6.0;
     var char_width= char_height / 2.0;
     //Render top and side borders
-    ctx.translate(-15, 60);
+    ctx.save();
+    ctx.translate(-17, 80);
     ctx.fillStyle = "#00ffff";
     ctx.fillRect(0 ,0, 260, char_height);
     ctx.fillRect(0, 0, char_height * 2, 116);
@@ -132,7 +135,6 @@ function dosScreen4(ctx) {
         " 19",
         " 20"
     ];
-    ctx.save();
     ctx.textAlign = "left";
     ctx.font = char_height + "px dos437,courier";
     ctx.strokeStyle = "#fff";
