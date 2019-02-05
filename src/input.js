@@ -116,6 +116,7 @@
     };
     addKeyDown(KEY_ESC, function() { inGameMenu.getMenuButton().onclick(); return true; }, isInGameMenuButtonClickable);
     addKeyDown(KEY_B, function() { inGameMenu.getBossMenu().enable(); return true; }, isInGameMenuButtonClickable);
+    addKeyDown(KEY_B,   function(){ menu.backButton ? menu.backButton.onclick():0; return true; }, isInMenu);
 
     // Move Pac-Man
     var isPlayState = function() { return state == learnState || state == newGameState || state == playState || state == readyNewState || state == readyRestartState; };
