@@ -251,6 +251,23 @@ var drawGhostSprite = (function(){
             ctx.fill();
         }
 
+        // draw lightning
+        if (eyes_only) {
+            ctx.beginPath();
+            ctx.strokeStyle = 'black';
+            ctx.fillStyle = 'yellow';
+            ctx.moveTo(8, 0);
+            ctx.lineTo(13, 0);
+            ctx.lineTo(10, 6);
+            ctx.lineTo(15, 6)
+            ctx.lineTo(6, 17);
+            ctx.lineTo(9, 9);
+            ctx.lineTo(5, 9);
+            ctx.closePath();
+            ctx.stroke();
+            ctx.fill();
+        }
+
         // draw face
         if (scared)
             addScaredFace(ctx, flash);
