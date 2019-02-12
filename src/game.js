@@ -29,14 +29,13 @@ var getGameDescription = (function(){
     var desc = [
         [],
         [
-            "TARI LABS CRYPTO EDITION",
-            "BE/SAFE/OUT/THERE (C) 2019",
+            "TARI LABS VALENTINES EDITION",
+            "(c) SixtyFour nibbles 2019 ",
             "",
-            "REVERSE-ENGINEERING:",
+            "THANK YOU",
             "BART GRANTHAM",
-            "",
-            "GRUNT WORK:",
             "SHAUN WILLIAMS",
+            "Alexey Pajitnov, the OG BOSS",
         ],
         [],
         [],
@@ -51,7 +50,7 @@ var getGameDescription = (function(){
 })();
 
 var getGhostNames = function(mode) {
-    return ["rver","jwu","cwright","dlarimer"];
+    return ["roger.ver","jihan.wu","craig.wright","dan.larimer"];
 };
 
 var getGhostDrawFunc = function(mode) {
