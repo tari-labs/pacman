@@ -7,7 +7,7 @@ var BossScreen = {
     }
 };
 
-var screens = [dosScreen, dosScreen2, dosScreen3, dosScreen4, dosScreen5];
+var screens = [ircScreen, dosScreen, dosScreen2, dosScreen3, dosScreen4, dosScreen5];
 
 var loadBoss = function(ctx, index, x, y) {
     var screenFunc = screens[(index-1) % screens.length];
@@ -260,5 +260,52 @@ function dosScreen5(ctx) {
     ctx.stroke();
     ctx.closePath();
 
+    ctx.restore();
+}
+
+function ircScreen(ctx) {
+    var char_height = 7.0;
+
+    function write_msg(i, time, nick, color, msg) {
+        var x = 5;
+        var y = (char_height + 3) * (+i + 1);
+        var t = time;
+        ctx.fillText(t, x, y);
+        ctx.save();
+        ctx.fillStyle = color;
+        x += ctx.measureText(t).width + 3;
+        ctx.fillText(nick, x, y);
+        ctx.restore();
+        x += ctx.measureText(nick).width + 3;
+        ctx.fillText(msg, x, y);
+    }
+
+    ctx.save();
+    ctx.textAlign = "left";
+    ctx.font = char_height + "px dos437,courier";
+    ctx.strokeStyle = "#fff";
+    ctx.fillStyle = "#fff";
+
+    var lines = [
+        ["[06:01]", "FreeNode IRC", "red", "Welcome to #tari-dev. This is a SERIOUS"],
+        ["[06:01]", "FreeNode IRC", "red", "channel for SERIOUS developers."],
+        ["[06:01]", "FreeNode IRC", "red", "No mucking around. No jokes. No fun. "],
+        ["[06:01]", "fluffypony", "green", "joined the channel."],
+        ["[06:01]", "morty", "dodgerblue", "joined the channel."],
+        ["[06:10]", "<fluffypony>", "green", "Morty, I need your help. We need to go on"],
+        ["", "", "green", "a quick adventure."],
+        ["[06:10]", "<morty>", "dodgerblue", "You said I could go to school today, Ric!"],
+        ["[06:10]", "<fluffypony>", "green", "That was before I needed something Morty!"],
+        ["", "", "green", "There is a cryptographic proof in the Abidongo archipelago and"],
+        ["", "", "green", "we need to go get it! It is just a 20min boat ride through a"],
+        ["", "", "green", "small squall! I've got my private keys in case we need them!"],
+        ["[06:11]", "<morty>", "dodgerblue", "Aww jeez Ric, that sounds kinda risky..."],
+        ["[06:11]", "<fluffypony>", "green", "Shut-up Morty, lets go!"],
+    ];
+    for (var i in lines) {
+        var line = lines[i];
+        line.unshift(i);
+        write_msg.apply(null, line);
+    }
     ctx.restore();
 }
