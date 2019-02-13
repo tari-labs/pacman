@@ -282,25 +282,35 @@ function ircScreen(ctx) {
 
     ctx.save();
     ctx.textAlign = "left";
-    ctx.font = char_height + "px dos437,courier";
+    ctx.font = char_height + "px courier";
     ctx.strokeStyle = "#fff";
     ctx.fillStyle = "#fff";
 
     var lines = [
-        ["[06:01]", "FreeNode IRC", "red", "Welcome to #tari-dev. This is a SERIOUS"],
-        ["[06:01]", "FreeNode IRC", "red", "channel for SERIOUS developers."],
-        ["[06:01]", "FreeNode IRC", "red", "No mucking around. No jokes. No fun. "],
-        ["[06:01]", "fluffypony", "green", "joined the channel."],
-        ["[06:01]", "morty", "dodgerblue", "joined the channel."],
-        ["[06:10]", "<fluffypony>", "green", "Morty, I need your help. We need to go on"],
-        ["", "", "green", "a quick adventure."],
-        ["[06:10]", "<morty>", "dodgerblue", "You said I could go to school today, Ric!"],
-        ["[06:10]", "<fluffypony>", "green", "That was before I needed something Morty!"],
-        ["", "", "green", "There is a cryptographic proof in the Abidongo archipelago and"],
-        ["", "", "green", "we need to go get it! It is just a 20min boat ride through a"],
-        ["", "", "green", "small squall! I've got my private keys in case we need them!"],
-        ["[06:11]", "<morty>", "dodgerblue", "Aww jeez Ric, that sounds kinda risky..."],
-        ["[06:11]", "<fluffypony>", "green", "Shut-up Morty, lets go!"],
+        ["FreeNode IRC", "#tari-dev", "blue", "Mon 9am/Thu 4pm(UCT)"],
+        ["[06:01]", "notabot", "yellow", "joined the channel."],
+        ["[06:03]", "<hi_joe>", "green", "bru. why hasn't RFC-0420 been merged?"],
+        ["[06:04]", "<fluffypony>", "orange", "because it's a proposal to distribute"],
+        ["", "", "orange", "weed on the blockchain."],
+        ["[06:05]", "<notabot>", "yellow", "please sir, wen ICO?"],
+        ["[06:05]", "<fluffypony>", "orange", "slays notabot where he stands."],
+        ["[06:10]", "<newguy23>", "pink", "what's a blockchain?"],
+        ["[06:11]", "<fluffypony>", "orange", "There's a TLU for that."],
+        ["[06:14]", "<n00b12>", "#d5a", "what's a scriptless script?"],
+        ["[06:14]", "<fluffypony>", "orange", "There's a TLU for that."],
+        ["[06:23]", "<jess>", "purple", "what's merge-mining?"],
+        ["[06:36]", "<fluffypony>", "orange", "https://tlu.tarilabs.com"],
+        ["[06:23]", "<jess>", "purple", "Wow, TLU is awesome. Needs more memes tho"],
+        ["[06:35]", "<stillnotabot>", "lightblue", "Admin, PM. I have amazink offer"],
+        ["[06:40]", "<csw>", "#f88", "I submitted a PR on tari-project/tari"],
+        ["[06:40]", "<fluffypony>", "orange", "thanks. will review"],
+        ["[06:45]", "<fluffypony>", "orange", "@csw, this is 'Hello, world' in Rust"],
+        ["[06:45]", "<fluffypony>", "orange", "and it doesn't compile"],
+        ["[06:45]", "<fluffypony>", "orange", "and you spelled 'hello' wrong"],
+        ["[06:40]", "<csw>", "#f88", "Screw u. Im makin by own blokchane. in PHP"],
+        ["[07:12]", "<augustus_baggins>", "#58e", "guise, when next puzzle?"],
+        ["[07:12]", "<cjs77>", "#44f", "two weeks (TM)"],
+        ["[07:15]", "<pickle_rick>", "#2f4", "Your boss left. Back to the game!"],
     ];
     for (var i in lines) {
         var line = lines[i];
