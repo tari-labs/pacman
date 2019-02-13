@@ -773,86 +773,6 @@ var scoreState = (function(){
 
 })();
 
-//////////////////////////////////////////////////////////////////////////////////////
-// About State
-// (the about screen state)
-
-var aboutState = (function(){
-
-    var exitTo = function(s) {
-        switchState(s);
-        menu.disable();
-    };
-
-    var menu = new Menu("", 2*tileSize,mapHeight-11*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
-    menu.addTextButton("BACK",
-        function() {
-            exitTo(preNewGameState);
-        });
-    menu.backButton = menu.buttons[menu.buttonCount-1];
-
-    var drawBody = function(ctx) {
-        ctx.font = tileSize+"px ArcadeR";
-        ctx.textBaseline = "top";
-        ctx.textAlign = "left";
-
-        var x,y;
-        x = 2*tileSize;
-        y = 0*tileSize;
-        ctx.fillStyle = "#0FF";
-        ctx.fillText("DEVELOPER", x,y);
-        y += tileSize*2;
-        ctx.fillStyle = "#777";
-        ctx.fillText("SHAUN WILLIAMS", x,y);
-
-        y += tileSize*4;
-        ctx.fillStyle = "#0FF";
-        ctx.fillText("REVERSE-ENGINEERS",x,y);
-        y += tileSize*2;
-        ctx.fillStyle = "#777";
-        ctx.fillText("JAMEY PITTMAN",x,y);
-        y += tileSize*2;
-        ctx.fillText("BART GRANTHAM",x,y);
-
-        y += tileSize*4;
-        ctx.fillStyle = "#FF0";
-        ctx.fillText("PAC-MAN",x,y);
-        y += tileSize*2;
-        ctx.fillStyle = "#777";
-        ctx.fillText("NAMCO",x,y);
-
-        y += tileSize*4;
-        ctx.fillStyle = "#FF0";
-        ctx.fillText("MS. PAC-MAN / CRAZY OTTO",x,y);
-        y += tileSize*2;
-        ctx.fillStyle = "#777";
-        ctx.fillText("GENERAL COMPUTING",x,y);
-    };
-
-    return {
-        init: function() {
-            menu.enable();
-            galagaStars.init();
-        },
-        draw: function() {
-            renderer.clearMapFrame();
-            renderer.beginMapClip();
-            renderer.renderFunc(galagaStars.draw);
-            renderer.renderFunc(drawBody);
-            renderer.renderFunc(menu.draw,menu);
-            renderer.endMapClip();
-        },
-        update: function() {
-            galagaStars.update();
-            menu.update();
-        },
-        getMenu: function() {
-            return menu;
-        },
-    };
-
-})();
-
 ////////////////////////////////////////////////////
 // New Game state
 // (state when first starting a new game)
@@ -1013,10 +933,6 @@ var playState = {
         return false;
     },
     update: function() {
-        
-
-
-
             var i,j; // loop index
             var maxSteps = 2;
             var skip = false;
