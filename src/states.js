@@ -245,12 +245,6 @@ var preNewGameState = (function() {
             newGameState.setStartLevel(1);
             exitTo(newGameState, 60);
         });
-    menu.addTextButton("PRACTICE",
-        function() {
-            practiceMode = true;
-            turboMode = false;
-            exitTo(selectActState);
-        });
     menu.addSpacer(0.5);
     menu.addTextButton("ABOUT",
         function() { 
@@ -791,10 +785,6 @@ var aboutState = (function(){
     };
 
     var menu = new Menu("", 2*tileSize,mapHeight-11*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
-    menu.addTextButton("GO TO PROJECT PAGE",
-        function() {
-            window.open("https://github.com/shaunew/Pac-Man");
-        });
     menu.addTextButton("BACK",
         function() {
             exitTo(preNewGameState);
@@ -877,7 +867,7 @@ var newGameState = (function() {
             clearCheats();
             frames = 0;
             level = startLevel-1;
-            extraLives = practiceMode ? Infinity : 3;
+            extraLives = 3;
             setScore(0);
             setFruitFromGameMode();
             readyNewState.init();

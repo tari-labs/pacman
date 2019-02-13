@@ -867,7 +867,7 @@ var initRenderer = function(){
 
             ctx.textAlign = "right";
             ctx.fillText("1UP", 6*tileSize, 0);
-            ctx.fillText(practiceMode ? "PRACTICE" : "HIGH SCORE", 19*tileSize, 0);
+            ctx.fillText("HIGH SCORE", 19*tileSize, 0);
             //ctx.fillText("2UP", 25*tileSize, 0);
 
             // TODO: player two score

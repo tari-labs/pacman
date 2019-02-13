@@ -5,7 +5,7 @@ var inGameMenu = (function() {
     var w=tileSize*6,h=tileSize*3;
 
     var getMainMenu = function() {
-        return practiceMode ? practiceMenu : menu;
+        return menu;
     };
     var showMainMenu = function() {
         getMainMenu().enable();
@@ -65,21 +65,7 @@ var inGameMenu = (function() {
     });
     menu.backButton = menu.buttons[0];
 
-    // practice menu
-    var practiceMenu = new Menu("PAUSED",2*tileSize,5*tileSize,mapWidth-4*tileSize,3*tileSize,tileSize,tileSize+"px ArcadeR", "#EEE");
-    practiceMenu.addTextButton("RESUME", function() {
-        hideMainMenu();
-    });
-    practiceMenu.addTextButton("QUIT", function() {
-        showConfirm("QUIT GAME?", function() {
-            switchState(preNewGameState, 60);
-            clearCheats();
-        });
-    });
-    practiceMenu.backButton = practiceMenu.buttons[0];
-
-
-    var menus = [menu, practiceMenu, confirmMenu, bossMenu];
+    var menus = [menu, confirmMenu, bossMenu];
     var getVisibleMenu = function() {
         var len = menus.length;
         var i;

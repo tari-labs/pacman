@@ -118,9 +118,6 @@ var highScores = [
     ];
 
 var getScoreIndex = function() {
-    if (practiceMode) {
-        return 8;
-    }
     return gameMode*2 + (turboMode ? 1 : 0);
 };
 
