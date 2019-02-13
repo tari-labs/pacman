@@ -32,7 +32,7 @@ var getGameDescription = (function(){
             "TARI LABS VALENTINES EDITION",
             "(c) SixtyFour nibbles 2019 ",
             "",
-            "THANK YOU",
+            "Acknowledgements",
             "BART GRANTHAM",
             "SHAUN WILLIAMS",
             "Alexey Pajitnov, the OG BOSS",

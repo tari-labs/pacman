@@ -253,7 +253,7 @@ var preNewGameState = (function() {
     menu.addSpacer(0.5);
     menu.addTextButton("BACK",
         function() {
-            exitTo(preNewGameState);
+            location.assign(document.referrer || "https://tari.com/contribute");
         });
     menu.backButton = menu.buttons[menu.buttonCount-1];
 
